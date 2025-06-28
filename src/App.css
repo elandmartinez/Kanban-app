@@ -1,0 +1,191 @@
+.App {
+  text-align: center;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Header styles  */
+
+.kanban-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2b2c37;
+  padding: 1rem;
+  color: #fff;
+  border-bottom: 1px solid #3e3f4b;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #828fa3;
+  cursor: pointer;
+}
+
+.board-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-task-btn {
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.more-options-btn {
+  background: none;
+  border: none;
+  color: #828fa3;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Sidebar styles */
+
+.kanban-sidebar {
+  width: 250px;
+  background-color: #2b2c37;
+  color: #828fa3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 100vh;
+}
+
+.sidebar-logo {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.boards-list {
+  width: 100%;
+  text-align: start;
+}
+
+.boards-list p {
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem 0.3rem;
+}
+
+.boards-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.boards-list li {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  align-content: start;
+}
+
+.boards-list li.active {
+  background-color: #635fc7;
+  color: #fff;
+}
+
+.create-board-btn {
+  margin-top: 1rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #635fc7;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.5rem 0;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.theme-toggle,
+.hide-sidebar-btn {
+  background: none;
+  border: none;
+  color: #828fa3;
+  cursor: pointer;
+}
+
+
+/* Main section styles */
+
+.kanban-main {
+  width: 100vw;
+  background-color: #20212c;
+  color: #828fa3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-board {
+  width: 100%;
+  text-align: center;
+}
+
+.add-column-btn {
+  margin-top: 1rem;
+  background-color: #635fc7;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
