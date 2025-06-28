@@ -5,7 +5,7 @@ export default function Header () {
         <button className="menu-icon">
           &#9776;
         </button>
-        <h1 className="board-title">Platform Launch</h1>
+        <h1 className="board-title text-purple-500">Platform Launch</h1>
       </div>
       <div className="header-right">
         <button className="add-task-btn">+ Add New Task</button>
