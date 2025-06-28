@@ -1,6 +1,6 @@
 export default function Header () {
   return (
-    <header className="kanban-header">
+    <header className="kanban-header bg-blue-100">
       <div className="header-left">
         <button className="menu-icon">
           &#9776;
