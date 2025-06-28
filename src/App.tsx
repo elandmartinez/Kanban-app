@@ -1,6 +1,3 @@
-import React from 'react';
-
-import './index.css';
 import Header from './components/Header';
 import MainSection from './components/MainSection';
 

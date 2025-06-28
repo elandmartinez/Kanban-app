@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -163,4 +164,3 @@ body::-webkit-scrollbar {
   border-radius: 20px;
   cursor: pointer;
 }
-
