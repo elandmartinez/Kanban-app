@@ -1,15 +1,19 @@
+import logo from  "../assets/logo.png"
+
 export default function Header () {
   return (
-    <header className="kanban-header bg-blue-100">
-      <div className="header-left">
-        <button className="menu-icon">
-          &#9776;
-        </button>
-        <h1 className="board-title text-purple-500">Platform Launch</h1>
+    <header className="flex justify-between items-center bg-[#2b2c37] p-4 text-white border-b border-[#3e3f4b]">
+      <div className="flex items-center gap-1">
+        <img src={logo} alt="App logo" className="w-8 h-8" />
+        <h1 className="text-[1.6rem] font-bold">Kanban</h1>
       </div>
-      <div className="header-right">
-        <button className="add-task-btn">+ Add New Task</button>
-        <button className="more-options-btn">&#8942;</button>
+      <div className="flex gap-[0.5rem]">
+        <button className="bg-[#635fc7] text-white border-none px-4 py-2 rounded-[20px] cursor-pointer">
+          + Add New Task
+        </button>
+        <button className="bg-none border-none text-[#828fa3] text-[1.5rem] cursor-pointer">
+          &#8942;
+        </button>
       </div>
     </header>
   )
