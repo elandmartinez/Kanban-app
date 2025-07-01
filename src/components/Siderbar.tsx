@@ -6,7 +6,7 @@ export default function SideBar () {
   return (
     <aside className="w-[250px] h-full bg-[#2b2c37] text-[#828fa3] flex flex-col justify-between p-4 pl-0">
       <nav className="w-full text-start">
-        <h3 className="text-[0.85rem] mb-4 pl-6">
+        <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
           ALL BOARDS (3)
         </h3>
         <ul className="list-none p-0 m-0">
