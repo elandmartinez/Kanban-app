@@ -1,26 +1,32 @@
 import moonIcon from "../assets/icons/crescent-moon.png"
+import greyBoardIcon from "../assets/icons/kanban-board-grey.svg"
+import whiteBoardIcon from "../assets/icons/kanban-board-white.svg"
+import purpleBoardIcon from "../assets/icons/kanban-board-purple.svg"
+
+const boards = ["Platforma Launch", "Marketing Plan", "Roadmap"]
 
 export default function SideBar () {
-  const listItemActiveStyles = "bg-purple text-white"
   
   return (
-    <aside className="w-[250px] h-full bg-[#2b2c37] text-[#828fa3] flex flex-col justify-between p-4 pl-0">
+    <aside className="min-w-[250px] w-[250px] h-full bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex flex-col justify-between p-4 pl-0">
       <nav className="w-full text-start">
         <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
           ALL BOARDS (3)
         </h3>
+
         <ul className="list-none p-0 m-0">
-          <li className="flex rounded-[5px] pl-6 cursor-pointer content-start transition-all duration-300 board">
-            Platform Launch
-          </li>
-          <li className="flex rounded-[5px] pl-6 cursor-pointer content-start transition-all duration-300 board">
-            Marketing Plan
-            </li>
-            <li className="flex rounded-[5px] pl-6 cursor-pointer content-start transition-all duration-300 board">
-            Roadmap
-            </li>
+          {boards.map((board, index) => {
+            return (
+              <li key={index} className="flex rounded-[5px] pl-6 mt-6 cursor-pointer content-start items-center transition-all duration-300 board">
+                <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" />
+                {board}
+              </li>
+            )
+          })}
         </ul>
-        <button className="mt-4 w-full bg-none border-none text-[#635fc7] cursor-pointer text-left pl-6 py-2">
+
+        <button className="mt-4 w-full bg-none border-none text-[#635fc7] cursor-pointer text-left pl-6 py-2 flex items-center transition-all duration-300">
+          <img src={purpleBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2 purple-board-icon" />
           + Create New Board
         </button>
       </nav>
