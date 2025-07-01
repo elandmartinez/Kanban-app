@@ -2,7 +2,7 @@ import SideBar from "./Siderbar";
 
 export default function MainSection () {
   return (
-    <main className="w-screen h-[92vh] bg-[#20212c] text-[#828fa3] flex justify-center items-center">
+    <main className="w-screen h-[92vh] relative bg-[#20212c] text-[#828fa3] flex justify-center items-center">
       <SideBar />
 
       <div className="w-full text-center">

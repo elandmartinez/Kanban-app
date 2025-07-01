@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "tailwindcss";
+@import "tw-animate-css";
+ 
+@custom-variant dark (&:is(.dark *));
 
 :root {
   /* Neutrals */
@@ -31,11 +35,6 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-}
-
-.board:hover {
-  background-color: purple;
-  color: white
 }
 
 .purple-board-icon {

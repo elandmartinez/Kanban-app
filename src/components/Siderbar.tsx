@@ -8,7 +8,8 @@ const boards = ["Platforma Launch", "Marketing Plan", "Roadmap"]
 export default function SideBar () {
   
   return (
-    <aside className="min-w-[250px] w-[250px] h-full bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex flex-col justify-between p-4 pl-0">
+    <aside className="min-w-[250px] w-[250px] h-[320px] rounded-xl absolute bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex flex-col justify-between p-4 pl-0
+    md:h-full">
       <nav className="w-full text-start">
         <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
           ALL BOARDS (3)
@@ -17,7 +18,7 @@ export default function SideBar () {
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
             return (
-              <li key={index} className="flex rounded-[5px] pl-6 mt-6 cursor-pointer content-start items-center transition-all duration-300 board">
+              <li key={index} className="flex rounded-[5px] p-2 pl-6 mt-2 cursor-pointer content-start items-center transition-all duration-300 board rounded-r-3xl hover:text-white hover:bg-mainPurple active:scale-[1.05]">
                 <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" />
                 {board}
               </li>
