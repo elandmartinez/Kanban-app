@@ -8,8 +8,8 @@ const boards = ["Platforma Launch", "Marketing Plan", "Roadmap"]
 export default function SideBar () {
   
   return (
-    <aside className="min-w-[250px] w-[250px] h-[320px] rounded-xl absolute bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex flex-col justify-between p-4 pl-0
-    md:h-full">
+    <aside className=" hidden min-w-[250px] w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between p-4 pl-0
+    sm:h-[92vh] sm:flex sm:rounded-none ">
       <nav className="w-full text-start">
         <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
           ALL BOARDS (3)
