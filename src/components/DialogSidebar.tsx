@@ -22,7 +22,7 @@ export default function DialogSidebar () {
             return (
               <li key={index} className="flex rounded-r-xl pl-6 py-3 mt-2 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurpleHover">
                 {/* <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" /> */}
-                <Icon SvgComponent={greyBoardIcon} className="w-4 h-4 mr-2" />
+                <Icon SvgComponent={greyBoardIcon} classname="w-4 h-4 mr-2" />
                 {board}
               </li>
             )

@@ -32,23 +32,10 @@ module.exports = {
 
         mainPurple: "var(--main-purple)",
         mainPurpleHover: "var(--main-purple-hover)",
+        mainPurpleShadow: "var(--main-purple-shadow)",
 
         red: "var(--red)",
         redHover: "var(--red-hover)"
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

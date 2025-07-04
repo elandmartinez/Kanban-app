@@ -1,12 +1,12 @@
 import React from "react";
 
-interface SvgRendererProps {
-  SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  className?: string;
+interface IconInterface {
+  SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>,
+  classname: string
 }
 
-const Icon: React.FC<SvgRendererProps> = ({ SvgComponent, className }) => (
-  <SvgComponent className={className} />
+const Icon: React.FC<IconInterface> = ({ SvgComponent, classname }) => (
+  <SvgComponent className={classname}/>
 );
 
-export default Icon
+export default Icon;
