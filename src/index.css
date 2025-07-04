@@ -25,6 +25,10 @@
   --red-hover: #FF9898;
 }
 
+path {
+  transition: all 200ms;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
@@ -37,6 +41,14 @@ body::-webkit-scrollbar {
   transition: all 200ms;
 }
 
-.purple-board-icon {
-  stroke: var(--main-purple);
+.board-item:hover .board-icon > path {
+  stroke: var(--light-grey)
+}
+
+.add-board-icon > path {
+  stroke: var(--main-purple)
+}
+
+.add-board-button:hover .add-board-icon > path {
+  stroke: white;
 }

@@ -1,8 +1,6 @@
 import moonIcon from "../assets/icons/moon.svg"
 import sunIcon from "../assets/icons/sun.svg"
-import {ReactComponent as greyBoardIcon} from "../assets/icons/kanban-board-grey.svg"
-import whiteBoardIcon from "../assets/icons/kanban-board-white.svg"
-import purpleBoardIcon from "../assets/icons/kanban-board-purple.svg"
+import {ReactComponent as greyBoardIcon} from "../assets/icons/kanban-board.svg"
 import { Switch } from "./ui/switch"
 import Icon from "./Icon"
 
@@ -20,7 +18,7 @@ export default function DialogSidebar () {
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
             return (
-              <li key={index} className="board-item flex rounded-r-xl pl-6 py-4 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurpleHover hover:text-white">
+              <li key={index} className="board-item flex max-w-[300px] rounded-r-3xl pl-6 py-4 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurple hover:text-white">
                 {/* <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" /> */}
                 <Icon SvgComponent={greyBoardIcon} classname="board-icon w-4 h-4 mr-2" />
                 {board}
@@ -29,8 +27,8 @@ export default function DialogSidebar () {
           })}
         </ul>
 
-        <button className="w-full bg-none border-none text-mainPurple cursor-pointer text-left pl-6 py-3 flex items-center transition-all duration-300">
-          <img src={purpleBoardIcon} alt="boardIcon" className=" create-board-icon w-4 h-4 mr-2 purple-board-icon" />
+        <button className="add-board-button w-full rounded-r-3xl max-w-[300px] bg-none border-none text-mainPurple cursor-pointer text-left pl-6 py-4 mt-4 flex items-center transition-all duration-300 hover:bg-mainPurple hover:text-white">
+          <Icon SvgComponent={greyBoardIcon} classname="add-board-icon w-4 h-4 mr-2 purple-board-icon" />
           + Create New Board
         </button>
       </nav>

@@ -1,41 +1,41 @@
-import moonIcon from "../assets/icons/crescent-moon.png"
-import greyBoardIcon from "../assets/icons/kanban-board-grey.svg"
-import whiteBoardIcon from "../assets/icons/kanban-board-white.svg"
-import purpleBoardIcon from "../assets/icons/kanban-board-purple.svg"
+import { ReactComponent as moonIcon } from "../assets/icons/moon.svg"
+import { ReactComponent as greyBoardIcon } from "../assets/icons/kanban-board.svg"
+import { ReactComponent as sunIcon } from "../assets/icons/sun.svg"
+import { Switch } from "./ui/switch"
+import Icon from "./Icon"
 
-const boards = ["Platforma Launch", "Marketing Plan", "Roadmap"]
+const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
 export default function SideBar () {
   
   return (
-    <aside className=" hidden min-w-[250px] w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between p-4 pl-0
-    sm:h-[92vh] sm:flex sm:rounded-none ">
-      <nav className="w-full text-start">
-        <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
+    <aside className="hidden min-w-[250px] w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4
+      sm:h-[92vh] sm:flex sm:rounded-none ">
+      <nav className="w-full text-start p-4 pl-0">
+        <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
           ALL BOARDS (3)
         </h3>
 
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
             return (
-              <li key={index} className="flex rounded-[5px] p-2 pl-6 mt-2 cursor-pointer content-start items-center transition-all duration-300 board rounded-r-3xl hover:text-white hover:bg-mainPurple active:scale-[1.05]">
-                <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" />
+              <li key={index} className="board-item flex rounded-[5px] max-w-[210px] p-4 pl-6 mt-2 cursor-pointer content-start items-center transition-all duration-300 board rounded-r-3xl hover:text-white hover:bg-mainPurple active:scale-[1.05]">
+                <Icon SvgComponent={greyBoardIcon} classname="board-icon w-4 h-4 mr-2" />
                 {board}
               </li>
             )
           })}
         </ul>
 
-        <button className="mt-4 w-full bg-none border-none text-[#635fc7] cursor-pointer text-left pl-6 py-2 flex items-center transition-all duration-300">
-          <img src={purpleBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2 purple-board-icon" />
+        <button className="add-board-button mt-6 w-full bg-none border-none text-mainPurple rounded-r-3xl cursor-pointer text-left pl-6 py-4 flex items-center transition-all duration-300 hover:bg-mainPurple hover:text-white">
+          <Icon SvgComponent={greyBoardIcon} classname="add-board-icon w-4 h-4 mr-2" />
           + Create New Board
         </button>
       </nav>
-      <div className="flex flex-col gap-[0.5rem] pl-4">
-        <img src={moonIcon} className="w-6 h-6" alt="nocturne icon" />
-        <button className="hide-sidebar-btn">
-          Hide Sidebar
-        </button>
+      <div className="w-[90%] flex justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
+        <Icon SvgComponent={sunIcon} classname="w-6 h-6" />
+          <Switch className="mx-4" />
+        <Icon SvgComponent={moonIcon} classname="w-6 h-6" />
       </div>
     </aside>
   )

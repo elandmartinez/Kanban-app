@@ -1,7 +1,7 @@
 import logo from  "../assets/logo.png"
 import {ReactComponent as plusIcon} from "../assets/icons/plus.svg"
 import {ReactComponent as dotsIcon} from "../assets/icons/dots.svg"
-import { Dialog, DialogTrigger, DialogContent, DialogClose } from "./ui/dialog"
+import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog"
 import DialogSidebar from "./DialogSidebar"
 import Icon from "./Icon"
 import { useEffect, useState } from "react"
