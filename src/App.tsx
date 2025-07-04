@@ -1,5 +1,5 @@
-import Header from './ownComponents/Header';
-import MainSection from './ownComponents/MainSection';
+import Header from "./components/Header";
+import MainSection from "./components/MainSection";
 import "./index.css"
 
 function App() {
