@@ -29,6 +29,7 @@ module.exports = {
         linesLight: "var(--lines-light)",
         lightGrey: "var(--light-grey)",
         white: "var(--white)",
+        bgWhiteHover: "var(--bg-white-hover)",
 
         mainPurple: "var(--main-purple)",
         mainPurpleHover: "var(--main-purple-hover)",

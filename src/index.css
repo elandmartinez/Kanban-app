@@ -12,7 +12,8 @@
   --medium-grey: #828FA3; 
   --lines-light: #E4EBFA; 
   --light-grey: #F4F7FD; /* light mode BG color */
-  --white: #ffffff; 
+  --white: #ffffff;
+  --bg-white-hover: rgba(255, 255, 255, 0.4);
 
   /* Purples */
   --main-purple: #635FC7; 
@@ -30,6 +31,10 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+.interactable {
+  transition: all 200ms;
 }
 
 .purple-board-icon {

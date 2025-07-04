@@ -20,17 +20,17 @@ export default function DialogSidebar () {
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
             return (
-              <li key={index} className="flex rounded-r-xl pl-6 py-3 mt-2 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurpleHover">
+              <li key={index} className="board-item flex rounded-r-xl pl-6 py-4 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurpleHover hover:text-white">
                 {/* <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" /> */}
-                <Icon SvgComponent={greyBoardIcon} classname="w-4 h-4 mr-2" />
+                <Icon SvgComponent={greyBoardIcon} classname="board-icon w-4 h-4 mr-2" />
                 {board}
               </li>
             )
           })}
         </ul>
 
-        <button className="w-full bg-none border-none text-mainPurple cursor-pointer text-left pl-6 py-2 flex items-center transition-all duration-300">
-          <img src={purpleBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2 purple-board-icon" />
+        <button className="w-full bg-none border-none text-mainPurple cursor-pointer text-left pl-6 py-3 flex items-center transition-all duration-300">
+          <img src={purpleBoardIcon} alt="boardIcon" className=" create-board-icon w-4 h-4 mr-2 purple-board-icon" />
           + Create New Board
         </button>
       </nav>
