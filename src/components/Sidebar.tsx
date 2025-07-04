@@ -1,17 +1,33 @@
 import { ReactComponent as moonIcon } from "../assets/icons/moon.svg"
 import { ReactComponent as greyBoardIcon } from "../assets/icons/kanban-board.svg"
 import { ReactComponent as sunIcon } from "../assets/icons/sun.svg"
+import { ReactComponent as eyeIcon } from "../assets/icons/eye.svg"
 import { Switch } from "./ui/switch"
 import Icon from "./Icon"
+import { useRef } from "react"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
 export default function SideBar () {
-  
+  const showSidebarClassname = "show-sidebar"
+
+  const sidebarRef = useRef<HTMLElement>(null)
+
+  function toggleDisplaySidebar () {
+    if(sidebarRef.current) {
+
+      if(sidebarRef.current.classList.contains(showSidebarClassname)) {
+        sidebarRef.current.classList.remove(showSidebarClassname)
+      } else {
+        sidebarRef.current.classList.add(showSidebarClassname)
+      }
+    }
+  }
+
   return (
-    <aside className="hidden min-w-[250px] w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4
-      sm:h-[92vh] sm:flex sm:rounded-none ">
-      <nav className="w-full text-start p-4 pl-0">
+    <aside ref={sidebarRef} className="hidden relative w-0 rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-200
+      sm:h-[92vh] sm:flex sm:rounded-none">
+      <nav className="absolute w-full text-start p-4 pl-0">
         <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
           ALL BOARDS (3)
         </h3>
@@ -32,11 +48,14 @@ export default function SideBar () {
           + Create New Board
         </button>
       </nav>
-      <div className="w-[90%] flex justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
+      <div className="absolute w-[90%] mb-4 justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
         <Icon SvgComponent={sunIcon} classname="w-6 h-6" />
           <Switch className="mx-4" />
         <Icon SvgComponent={moonIcon} classname="w-6 h-6" />
       </div>
+      <button onClick={() => {toggleDisplaySidebar()}} className="display-sidebar-button absolute w-10 h-10 bottom-[36px] -right-[39px] bg-darkGrey rounded-r-3xl flex items-center pl-[6px]">
+          <Icon SvgComponent={eyeIcon}  classname="eye-icon eye-icon w-6 h-6" />
+      </button>
     </aside>
   )
 }

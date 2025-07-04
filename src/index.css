@@ -9,7 +9,7 @@
   --very-dark-grey: #20212C; /* dark mode BG color */
   --dark-grey: #2B2C37;
   --lines-dark: #3E3F4E; 
-  --medium-grey: #828FA3; 
+  --medium-grey: #828FA3;
   --lines-light: #E4EBFA; 
   --light-grey: #F4F7FD; /* light mode BG color */
   --white: #ffffff;
@@ -41,6 +41,18 @@ body::-webkit-scrollbar {
   transition: all 200ms;
 }
 
+.show-sidebar {
+  width: 250px
+}
+
+.show-sidebar nav {
+  position: relative;
+}
+
+.show-sidebar div {
+  position: relative;
+}
+
 .board-item:hover .board-icon > path {
   stroke: var(--light-grey)
 }
@@ -51,4 +63,8 @@ body::-webkit-scrollbar {
 
 .add-board-button:hover .add-board-icon > path {
   stroke: white;
+}
+
+.display-sidebar-button:hover .eye-icon > path {
+  fill: white;
 }
