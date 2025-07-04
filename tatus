@@ -1,0 +1,85 @@
+[33mcommit 159b1d2e28e635f32c394bd4093b0e38d7f469fd[m[33m ([m[1;36mHEAD[m[33m)[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Thu Jul 3 21:39:21 2025 -0500
+
+    created a dialog with shadcn for sidebar on mobile and configures colors and proportions better
+
+[33mcommit cc333635ba97e5e6d130c05e4cca623880119fec[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Wed Jul 2 00:41:58 2025 -0500
+
+    WIP: fixing issue with tailwind set up due to version mismatch
+
+[33mcommit 4d77f7282c38ede270c99ad6383a3b69ee7dcdf6[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Tue Jul 1 02:13:43 2025 -0500
+
+    installed and prepped shadcn and its dialog componet, WIP:implementing dialog component for sidebar dialog in mobile screen
+
+[33mcommit c1d9e922f07cc3e4e937e1083c029e64f4d17e5f[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Tue Jul 1 01:13:00 2025 -0500
+
+    WIP: adjusting sidebar styles to look like the figma design
+
+[33mcommit 85cee0599dd04d8bfeaf51863f6c211f9b6017a2[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Mon Jun 30 21:27:43 2025 -0500
+
+    imported plus jakarta sans font and used it as a tailwind variable now
+
+[33mcommit 0f0ebed3889e5b58ba4b23309d0e1df9c0e962c3[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Mon Jun 30 12:51:07 2025 -0500
+
+    changed styles from css modules to tailwind in component
+
+[33mcommit f214cce4441c3430feba4290bb886c5404be1cea[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Sat Jun 28 14:28:17 2025 -0500
+
+    reverted commented components, we're back on track building the project
+
+[33mcommit 09e05f91b19a45b257ad3cd60d5733b08c8244ba[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Sat Jun 28 14:24:10 2025 -0500
+
+    fixed issue with tilwind not working by using tailwind v3 instead of v4, tried every other aparent solution before doing this
+
+[33mcommit 0090eeb1f13c478f31650ebabbea7c7fa5cbafc9[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Sat Jun 28 00:33:01 2025 -0500
+
+    WIP: integrating tailwind, so far i've installed and configured everything but it doesnt seem to be working when the page loads
+
+[33mcommit cfc05f7a47b932e98a6e940972d953a497d1478e[m
+Merge: f3e345a 312afac
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Fri Jun 27 23:05:26 2025 -0500
+
+    fixed merge conlicts
+
+[33mcommit f3e345a6c073f65c4253f3df3a220de5e6562dd8[m
+Author: Elias Andres <elandmartinez+github@gmail.com>
+Date:   Fri Jun 27 19:11:26 2025 -0500
+
+    created project and initial code for components Header, MainSeaction and Sidebar
+
+[33mcommit 312afac61229218cab3dbbf97d71027465db310c[m
+Merge: 28e3132 aa4a9f6
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Tue May 20 23:35:02 2025 -0500
+
+    merging changes from remote repo, readme file didnt match
+
+[33mcommit 28e31322129c54c1ce40b4c6fd6f3c231f527696[m
+Author: Elias Martinez <elandmartinez+github@gmail.com>
+Date:   Tue May 20 23:33:29 2025 -0500
+
+    started react app for kanbna project
+
+[33mcommit aa4a9f6563144958a782d84b90f9120e867071b1[m
+Author: Elias Martinez <87088062+elandmartinez@users.noreply.github.com>
+Date:   Tue May 20 23:31:46 2025 -0500
+
+    Initial commit
