@@ -25,7 +25,7 @@ export default function SideBar () {
   }
 
   return (
-    <aside ref={sidebarRef} className="relative w-[300px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-200
+    <aside ref={sidebarRef} className="min-w-[300px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-200
       sm:h-[92vh] sm:flex sm:rounded-none">
       <nav className="w-full text-start p-4 pl-0">
         <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
@@ -53,7 +53,7 @@ export default function SideBar () {
           <Switch className="mx-4" />
         <Icon SvgComponent={moonIcon} classname="w-6 h-6" />
       </div>
-      <button onClick={() => {toggleDisplaySidebar()}} className="display-sidebar-button absolute w-10 h-10 bottom-[36px] -right-[39px] bg-darkGrey rounded-r-3xl flex items-center pl-[6px]">
+      <button onClick={() => {toggleDisplaySidebar()}} className="display-sidebar-button absolute w-10 h-10 bottom-[36px] left-[300px] bg-darkGrey rounded-r-3xl flex items-center pl-[6px]">
           <Icon SvgComponent={eyeIcon}  classname="eye-icon eye-icon w-6 h-6" />
       </button>
     </aside>
