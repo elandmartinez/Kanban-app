@@ -42,16 +42,18 @@ body::-webkit-scrollbar {
 }
 
 .show-sidebar {
-  width: 250px
 }
 
-.show-sidebar nav {
-  position: relative;
+/* .show-sidebar nav {
+  transition: all 400ms;
+  display: block;
+  opacity: 1;
 }
 
 .show-sidebar div {
-  position: relative;
-}
+  display: flex;
+  opacity: 1;
+} */
 
 .board-item:hover .board-icon > path {
   stroke: var(--light-grey)
