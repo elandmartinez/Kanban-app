@@ -11,12 +11,12 @@ interface HeaderProps {
 
 export default function Header ({ isUnderSmScreen }: HeaderProps) {
   return (
-    <header className="flex justify-between h-[10vh] items-center bg-darkGrey p-4 text-white border-b border-linesDark">
+    <header className="flex justify-between h-[10vh] items-center bg-darkGrey px-4 text-white border-b border-linesDark">
       <Dialog>
 
         <DialogTrigger asChild>
 
-          <div className="interactable flex items-center gap-1">
+          <div className="interactable flex items-center gap-1 w-[234px] h-full border-r-[1px] border-linesDark">
             <button>
               <img src={logo} alt="App logo" className="w-8 h-8" />
             </button>

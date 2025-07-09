@@ -4,29 +4,39 @@ import { ReactComponent as sunIcon } from "../assets/icons/sun.svg"
 import { ReactComponent as eyeIcon } from "../assets/icons/eye.svg"
 import { Switch } from "./ui/switch"
 import Icon from "./Icon"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
 export default function Sidebar () {
   const showSidebarClassname = "show-sidebar"
+  const [showSidebar, setShowSidebar] = useState(false)
 
   const sidebarRef = useRef<HTMLElement>(null)
 
   function toggleDisplaySidebar () {
     if(sidebarRef.current) {
 
-      if(sidebarRef.current.classList.contains(showSidebarClassname)) {
-        sidebarRef.current.classList.remove(showSidebarClassname)
-      } else {
+      const shouldShowSidebar = !showSidebar
+
+      if(shouldShowSidebar) {
         sidebarRef.current.classList.add(showSidebarClassname)
+        setShowSidebar(true)
+      } else {
+        sidebarRef.current.classList.remove(showSidebarClassname)
       }
+
+      setShowSidebar(shouldShowSidebar)
     }
   }
 
+  /* useEffect(() => {
+    setShowSidebar(false)
+  }, []) */
+
   return (
-    <aside ref={sidebarRef} className="min-w-[250px] border-r-[1px] border-linesDark absolute left-0 w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-300
-      sm:h-full sm:flex sm:rounded-none">
+    <aside ref={sidebarRef} className="min-w-[250px] w-[250px] border-r-[1px] h-[90.1vh] border-t-0 border-linesDark absolute -left-[250px] bottom-0 rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-300
+      sm:flex sm:rounded-none">
       <nav className="w-full text-start p-4 pl-0">
         <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
           ALL BOARDS (3)

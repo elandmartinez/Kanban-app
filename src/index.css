@@ -42,11 +42,16 @@ body::-webkit-scrollbar {
 }
 
 .show-sidebar {
-  transform: translateX(-250px);
+  transform: translateX(250px);
 }
 
 .board-item:hover .board-icon > path {
   stroke: var(--light-grey)
+}
+
+.show-sidebar + .main-section {
+  min-width: 85%;
+  width: 85%;
 }
 
 .add-board-icon > path {
