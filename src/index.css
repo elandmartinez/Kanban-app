@@ -13,7 +13,13 @@
   --lines-light: #E4EBFA; 
   --light-grey: #F4F7FD; /* light mode BG color */
   --white: #ffffff;
+
+  /* separate */
   --bg-white-hover: rgba(255, 255, 255, 0.4);
+  --bg-black-hover: rgba(0, 0, 0, 0.2);
+
+  --background: #F4F7FD;
+  --background-semi: #E4EBFA;
 
   /* Purples */
   --main-purple: #635FC7; 
@@ -23,6 +29,13 @@
   /* Reds */
   --red: #EA5555; 
   --red-hover: #FF9898;
+}
+
+.dark {
+  --background: #20212C;
+  --background-semi: #2B2C37;
+  --text-color: #828FA3;
+  --lines-color: #3E3F4E;
 }
 
 path {
