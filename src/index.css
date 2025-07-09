@@ -6,24 +6,29 @@
 :root {
   /* Neutrals */
   --black: #000112; 
+  --white: #ffffff;
+
+
   --very-dark-grey: #20212C; /* dark mode BG color */
   --dark-grey: #2B2C37;
   --lines-dark: #3E3F4E; 
   --medium-grey: #828FA3;
   --lines-light: #E4EBFA; 
   --light-grey: #F4F7FD; /* light mode BG color */
-  --white: #ffffff;
+
+  --background: #F4F7FD;
+  --background-semi: #E4EBFA;
+  --main-text-color: #2B2C37;
+  --secondary-text-color: #828FA3;
+  --lines-color: #E4EBFA;
 
   /* separate */
   --bg-white-hover: rgba(255, 255, 255, 0.4);
   --bg-black-hover: rgba(0, 0, 0, 0.2);
 
-  --background: #F4F7FD;
-  --background-semi: #E4EBFA;
-
   /* Purples */
   --main-purple: #635FC7; 
-  --main-purple-hover: #A8A4FF; 
+  --main-purple-light: #8a84ff; 
   --main-purple-shadow: rgba(99, 95, 199, 0.1);
 
   /* Reds */
@@ -34,7 +39,8 @@
 .dark {
   --background: #20212C;
   --background-semi: #2B2C37;
-  --text-color: #828FA3;
+  --main-text-color: #F4F7FD;
+  --secondary-text-color: #E4EBFA;
   --lines-color: #3E3F4E;
 }
 
@@ -76,5 +82,5 @@ body::-webkit-scrollbar {
 }
 
 .display-sidebar-button:hover .eye-icon > path {
-  fill: white;
+  fill: var(--main-purple);
 }

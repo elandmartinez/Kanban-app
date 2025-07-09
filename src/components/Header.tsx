@@ -11,12 +11,12 @@ interface HeaderProps {
 
 export default function Header ({ isUnderSmScreen }: HeaderProps) {
   return (
-    <header className="flex justify-between h-[10vh] items-center bg-darkGrey px-4 text-white border-b border-linesDark">
+    <header className="flex justify-between h-[10vh] items-center bg-background px-4 text-mainTextColor border-b border-linesColor">
       <Dialog>
 
         <DialogTrigger asChild>
 
-          <div className="interactable flex items-center gap-1 w-[234px] h-full border-r-[1px] border-linesDark">
+          <div className="interactable flex items-center gap-1 w-[234px] h-full border-r-[1px] border-linesColor">
             <button>
               <img src={logo} alt="App logo" className="w-8 h-8" />
             </button>
@@ -28,7 +28,7 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
         <div className="flex items-center gap-[0.5rem]">
           <button className="
             interactable bg-mainPurple h-[28px] text-white border-none px-4 flex items-center rounded-[20px] cursor-pointer
-            hover:bg-mainPurpleHover hover:text-white sm:py-1 sm:h-[36px]"
+            hover:bg-mainPurpleLight hover:text-white sm:py-1 sm:h-[36px]"
           >
             <Icon SvgComponent={plusIcon} classname="w-[12px] h-[12px] sm:mr-2" />
             <p className="hidden sm:block">

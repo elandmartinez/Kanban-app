@@ -22,17 +22,26 @@ module.exports = {
       },
       colors: {
         black: "var(--black)",
+        white: "var(--white)",
+
         veryDarkGrey: "var(--very-dark-grey)",
         darkGrey: "var(--dark-grey)",
         linesDark: "var(--lines-dark)",
         mediumGrey: "var(--medium-grey)",
         linesLight: "var(--lines-light)",
         lightGrey: "var(--light-grey)",
-        white: "var(--white)",
         bgWhiteHover: "var(--bg-white-hover)",
 
+        /* light/dark colors */
+
+        background: "var(--background)",
+        backgroundSemi: "var(--background-semi)",
+        mainTextColor: "var(--main-text-color)",
+        secondaryTextColor: "var(--secondary-text-color)",
+        linesColor: "var(--lines-color)",
+
         mainPurple: "var(--main-purple)",
-        mainPurpleHover: "var(--main-purple-hover)",
+        mainPurpleLight: "var(--main-purple-light)",
         mainPurpleShadow: "var(--main-purple-shadow)",
 
         red: "var(--red)",

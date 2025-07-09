@@ -32,7 +32,7 @@ export default function DialogSidebar () {
           + Create New Board
         </button>
       </nav>
-      <div className="w-[90%] flex justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
+      <div className="w-[90%] flex justify-between bg-backgroundSemi rounded-lg align-middle gap-[0.5rem] p-3">
         <img src={sunIcon} className="w-6 h-6" alt="Daylight icon" />
           <Switch className="mx-4" />
         <img src={moonIcon} className="w-6 h-6" alt="nocturne icon" />

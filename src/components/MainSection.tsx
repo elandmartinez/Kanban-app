@@ -7,7 +7,7 @@ interface mainSectionProps {
 export default function MainSection ({ isUnderSmScreen }: mainSectionProps ) {
 
   return (
-    <main className="w-screen relative h-[90vh] bg-veryDarkGrey text-mediumGrey flex justify-end">
+    <main className="w-screen relative h-[90vh] bg-background text-mediumGrey flex justify-end">
 
       {
         isUnderSmScreen ?
@@ -17,9 +17,9 @@ export default function MainSection ({ isUnderSmScreen }: mainSectionProps ) {
       }
 
 
-      <div className="main-section bg-linesLight w-[100%] text-center p-6 flex flex-col justify-center items-center transition-all duration-300">
+      <div className="main-section bg-backgroundSemi w-[100%] text-center p-6 flex flex-col justify-center items-center transition-all duration-300">
         <p className="font-bold" >This board is empty. Create a new column to get started.</p>
-        <button className="interactable mt-4 bg-mainPurple text-white border-none px-4 py-2 rounded-[20px] cursor-pointer hover:bg-mainPurpleHover">
+        <button className="interactable mt-4 bg-mainPurple text-white border-none px-4 py-2 rounded-[20px] cursor-pointer hover:bg-mainPurpleLight">
           + Add New Column
         </button>
       </div>
