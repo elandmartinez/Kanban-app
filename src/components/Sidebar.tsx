@@ -26,7 +26,7 @@ export default function Sidebar () {
 
   return (
     <aside ref={sidebarRef} className="min-w-[250px] border-r-[1px] border-linesDark absolute left-0 w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-300
-      sm:h-[92vh] sm:flex sm:rounded-none">
+      sm:h-full sm:flex sm:rounded-none">
       <nav className="w-full text-start p-4 pl-0">
         <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
           ALL BOARDS (3)
