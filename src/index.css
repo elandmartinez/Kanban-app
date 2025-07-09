@@ -42,8 +42,7 @@ body::-webkit-scrollbar {
 }
 
 .show-sidebar {
-  position: absolute;
-  transform: translateX(-300px);
+  transform: translateX(-250px);
 }
 
 .board-item:hover .board-icon > path {

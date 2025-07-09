@@ -8,7 +8,7 @@ import { useRef } from "react"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
-export default function SideBar () {
+export default function Sidebar () {
   const showSidebarClassname = "show-sidebar"
 
   const sidebarRef = useRef<HTMLElement>(null)
@@ -25,7 +25,7 @@ export default function SideBar () {
   }
 
   return (
-    <aside ref={sidebarRef} className="min-w-[300px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-200
+    <aside ref={sidebarRef} className="min-w-[250px] border-r-[1px] border-linesDark absolute left-0 w-[250px] rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex-col justify-between items-center py-4 transition-all duration-300
       sm:h-[92vh] sm:flex sm:rounded-none">
       <nav className="w-full text-start p-4 pl-0">
         <h3 className="text-[0.82rem] tracking-[0.11em] font-bold mb-4 pl-6">
@@ -43,17 +43,17 @@ export default function SideBar () {
           })}
         </ul>
 
-        <button className="add-board-button mt-6 w-full bg-none border-none text-mainPurple rounded-r-3xl cursor-pointer text-left pl-6 py-4 flex items-center transition-all duration-300 hover:bg-mainPurple hover:text-white">
+        <button className="add-board-button mt-6 w-full max-w-[210px] bg-none border-none text-mainPurple rounded-r-3xl cursor-pointer text-left pl-6 py-4 flex items-center transition-all duration-300 hover:bg-mainPurple hover:text-white">
           <Icon SvgComponent={greyBoardIcon} classname="add-board-icon w-4 h-4 mr-2" />
           + Create New Board
         </button>
       </nav>
-      <div className="w-[90%] mb-4 flex justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
+      <div className="w-[80%] mb-4 flex justify-between bg-veryDarkGrey rounded-lg align-middle gap-[0.5rem] p-3">
         <Icon SvgComponent={sunIcon} classname="w-6 h-6" />
           <Switch className="mx-4" />
         <Icon SvgComponent={moonIcon} classname="w-6 h-6" />
       </div>
-      <button onClick={() => {toggleDisplaySidebar()}} className="display-sidebar-button absolute w-10 h-10 bottom-[36px] left-[300px] bg-darkGrey rounded-r-3xl flex items-center pl-[6px]">
+      <button onClick={() => {toggleDisplaySidebar()}} className="display-sidebar-button border-[1px] border-l-0 border-linesDark absolute w-10 h-10 bottom-[36px] left-[249px] bg-darkGrey rounded-r-3xl flex items-center pl-[6px] transition-all duration-300">
           <Icon SvgComponent={eyeIcon}  classname="eye-icon eye-icon w-6 h-6" />
       </button>
     </aside>
