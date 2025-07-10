@@ -8,14 +8,6 @@
   --black: #000112; 
   --white: #ffffff;
 
-
-  --very-dark-grey: #20212C; /* dark mode BG color */
-  --dark-grey: #2B2C37;
-  --lines-dark: #3E3F4E; 
-  --medium-grey: #828FA3;
-  --lines-light: #E4EBFA; 
-  --light-grey: #F4F7FD; /* light mode BG color */
-
   --background: #F4F7FD;
   --background-semi: #E4EBFA;
   --main-text-color: #2B2C37;
@@ -83,4 +75,8 @@ body::-webkit-scrollbar {
 
 .display-sidebar-button:hover .eye-icon > path {
   fill: var(--main-purple);
+}
+
+* {
+  transition: all 300ms;
 }
