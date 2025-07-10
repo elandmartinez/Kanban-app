@@ -4,14 +4,16 @@ import { ReactComponent as sunIcon } from "../assets/icons/sun.svg"
 import { ReactComponent as eyeIcon } from "../assets/icons/eye.svg"
 import { Switch } from "./ui/switch"
 import Icon from "./Icon"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
+import { useDispatch } from "react-redux"
+import { markCheck, markUncheck } from "../appState/slices/darkModeSlice"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
 export default function Sidebar () {
-  const htmlElement = document.getElementsByTagName("html")[0]
-  const showSidebarClassname = "show-sidebar"
   const [showSidebar, setShowSidebar] = useState(false)
+  const dispatch = useDispatch()
+  const showSidebarClassname = "show-sidebar"
 
   const sidebarRef = useRef<HTMLElement>(null)
 
@@ -32,10 +34,11 @@ export default function Sidebar () {
   }
 
   function handleSwitchThemeChange (checked: boolean) {
+
     if(checked) {
-      htmlElement.classList.add("dark")
+      dispatch(markCheck())
     } else {
-      htmlElement.classList.remove("dark")
+      dispatch(markUncheck())
     }
   }
 
@@ -51,7 +54,7 @@ export default function Sidebar () {
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
             return (
-              <li key={index} className="board-item flex max-w-[210px] p-4 pl-6 mt-2 cursor-pointer content-start items-center transition-all duration-300 board rounded-r-3xl hover:text-white hover:bg-mainPurple active:scale-[1.05]">
+              <li key={index} className="board-item flex max-w-[210px] text-secondaryTextColor p-4 pl-6 mt-2 cursor-pointer content-start items-center transition-all duration-300 board rounded-r-3xl hover:text-white hover:bg-mainPurple active:scale-[1.05]">
                 <Icon SvgComponent={greyBoardIcon} classname="board-icon w-4 h-4 mr-2" />
                 {board}
               </li>

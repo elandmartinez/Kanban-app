@@ -3,17 +3,26 @@ import sunIcon from "../assets/icons/sun.svg"
 import {ReactComponent as greyBoardIcon} from "../assets/icons/kanban-board.svg"
 import { Switch } from "./ui/switch"
 import Icon from "./Icon"
+import { useDispatch } from "react-redux"
+import { markCheck, markUncheck } from "../appState/slices/darkModeSlice"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 
 export default function DialogSidebar () {
-  
+  const dispatch = useDispatch()
+
+  function handleSwitchThemeChange (checked: boolean) {
+
+    if(checked) {
+      dispatch(markCheck())
+    } else {
+      dispatch(markUncheck())
+    }
+  }
+
   return (
-    <aside className="w-full h-full flex flex-col justify-between items-center py-4">
-      <nav className="w-full text-start p-4 pl-0">
-        <h3 className="text-[0.75rem] tracking-wider font-bold mb-4 pl-6">
-          ALL BOARDS (3)
-        </h3>
+    <aside className="w-full h-full flex flex-col justify-between items-center">
+      <nav className="w-full text-start p-rb-4">
 
         <ul className="list-none p-0 m-0">
           {boards.map((board, index) => {
@@ -32,9 +41,9 @@ export default function DialogSidebar () {
           + Create New Board
         </button>
       </nav>
-      <div className="w-[90%] flex justify-between bg-backgroundSemi rounded-lg align-middle gap-[0.5rem] p-3">
+      <div className="w-[90%] flex justify-between bg-backgroundSemi rounded-lg align-middle gap-[0.5rem] p-3 px-16">
         <img src={sunIcon} className="w-6 h-6" alt="Daylight icon" />
-          <Switch className="mx-4" />
+          <Switch className="mx-4" onCheckedChange={handleSwitchThemeChange} />
         <img src={moonIcon} className="w-6 h-6" alt="nocturne icon" />
       </div>
     </aside>

@@ -13,6 +13,8 @@
   --main-text-color: #2B2C37;
   --secondary-text-color: #828FA3;
   --lines-color: #E4EBFA;
+  --check-input-bg: rgba(99, 95, 199, 0.7);
+  --bg-hover-shadow: rgba(99, 95, 199, 0.1);
 
   /* separate */
   --bg-white-hover: rgba(255, 255, 255, 0.4);
@@ -34,6 +36,9 @@
   --main-text-color: #F4F7FD;
   --secondary-text-color: #E4EBFA;
   --lines-color: #3E3F4E;
+  --check-input-bg: #E4EBFA;
+  --bg-hover-shadow: rgba(255, 255, 255, 0.4); 
+  
 }
 
 path {
@@ -57,7 +62,7 @@ body::-webkit-scrollbar {
 }
 
 .board-item:hover .board-icon > path {
-  stroke: var(--light-grey)
+  stroke: white
 }
 
 .show-sidebar + .main-section {

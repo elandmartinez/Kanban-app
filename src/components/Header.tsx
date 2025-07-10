@@ -4,6 +4,7 @@ import {ReactComponent as dotsIcon} from "../assets/icons/dots.svg"
 import { Dialog, DialogTrigger, DialogContent } from "./ui/dialog"
 import DialogSidebar from "./DialogSidebar"
 import Icon from "./Icon"
+import { DialogTitle } from "@radix-ui/react-dialog"
 
 interface HeaderProps {
   isUnderSmScreen: boolean
@@ -16,7 +17,7 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
 
         <DialogTrigger asChild>
 
-          <div className="interactable flex items-center gap-1 w-[234px] h-full border-r-[1px] border-linesColor">
+          <div className="interactable flex items-center gap-1 h-full sm:border-r-[1px] sm:border-linesColor sm:w-[234px]">
             <button>
               <img src={logo} alt="App logo" className="w-8 h-8" />
             </button>
@@ -35,16 +36,24 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
               Add New Task
             </p>
           </button>
-          <button className="interactable p-2 rounded-xl cursor-pointer hover:bg-bgWhiteHover">
+          <button className="interactable p-2 rounded-xl cursor-pointer hover:bg-bgHoverShadow">
             <Icon SvgComponent={dotsIcon} classname="w-4 h-4" />
           </button>
         </div>
 
         {
           isUnderSmScreen ?
-          (<DialogContent className="border-0 w-[85%] max-w-[350px] h-[450px] p-0 rounded-xl bg-darkGrey text-mediumGrey text-[0.85rem] font-bold flex flex-col justify-between items-center py-4">
-            <DialogSidebar />
-          </DialogContent>) :
+          <>
+            <DialogContent className="border-0 w-[85%] max-w-[350px] h-[400px] p-0 bg-background rounded-xl text-secondaryTextColor text-[0.85rem] font-bold py-6">
+              <DialogTitle>
+              <p className="text-[0.75rem] h-[20px] tracking-wider font-bold mt-4 pl-6">
+                ALL BOARDS (3)
+              </p>
+            </DialogTitle>
+              <DialogSidebar />
+            </DialogContent>
+          </>
+          :
           null
         }
       </Dialog>

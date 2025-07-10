@@ -31,6 +31,7 @@ module.exports = {
         linesLight: "var(--lines-light)",
         lightGrey: "var(--light-grey)",
         bgWhiteHover: "var(--bg-white-hover)",
+        bgBlackHover: "var(--bg-black-hover)",
 
         /* light/dark colors */
 
@@ -39,6 +40,8 @@ module.exports = {
         mainTextColor: "var(--main-text-color)",
         secondaryTextColor: "var(--secondary-text-color)",
         linesColor: "var(--lines-color)",
+        checkInputBg: "var(--check-input-bg)",
+        bgHoverShadow: "var(--bg-hover-shadow)",
 
         mainPurple: "var(--main-purple)",
         mainPurpleLight: "var(--main-purple-light)",

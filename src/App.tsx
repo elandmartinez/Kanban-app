@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import MainSection from "./components/MainSection";
 import "./index.css"
+import { useSelector } from "react-redux";
+import { RootState } from "./appState/store";
 
 function App() {
+  //this code is for handling the dark mode state update and change in the body html element
+  const { checked: darkModeState } = useSelector((state: RootState) => state.darkMode)
+
+  if(darkModeState) document.getElementsByTagName("body")[0].classList.add("dark")
+  if(!darkModeState) document.getElementsByTagName("body")[0].classList.remove("dark")
+
   //insert and observer here that detects when screen is thinner than sm breakpoint so DiaologSidebar mounts
   const minusSmScreenSize = "(max-width: 640px)"
   const [isUnderSmScreen, setIsUnderSmScreen] = useState(() => window.matchMedia(minusSmScreenSize).matches)
