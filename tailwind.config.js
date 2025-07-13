@@ -41,7 +41,9 @@ module.exports = {
         secondaryTextColor: "var(--secondary-text-color)",
         linesColor: "var(--lines-color)",
         checkInputBg: "var(--check-input-bg)",
+        secondaryPurple: "var(--secondary-purple)",
         bgHoverShadow: "var(--bg-hover-shadow)",
+        iconsSecodaryColor: "var(--icons-secondary-color)",
 
         mainPurple: "var(--main-purple)",
         mainPurpleLight: "var(--main-purple-light)",

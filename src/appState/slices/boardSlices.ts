@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface BoardState {
+export interface BoardState {
   id: number
   name: string
 }
