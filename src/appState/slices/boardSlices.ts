@@ -3,12 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface BoardState {
   id: number
   name: string
+  taskStages: string[]
 }
 
 const boardsInitialState: BoardState[] = [
   {
     id: 1,
-    name: "Platform Launch"
+    name: "Platform Launch",
+    taskStages: []
   }
 ]
 
