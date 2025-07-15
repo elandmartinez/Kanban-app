@@ -30,31 +30,37 @@ export default function Board () {
       console.log({selectedBoard, boardData, boardTasks})
     }
   }, [])
+
   return (
-    <div className="main-section bg-backgroundSemi w-screen text-center p-6 overflow-x-auto flex justify-center items-center transition-all duration-300">
+    <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
       {
         selectedBoard.id && boardData ? (
-          <div className="flex flex-col gap-8 min-w-full gap w-fit">
+          <div className="flex gap-6 w-full h-full items-start">
             {
-              boardData.taskStages.map((stage) =>{
+              boardData.taskStages.map((stage) => {
                 const stageTasks = tasks.filter(task => task.stage === stage)
 
                 return (
-                <div>
-                  <h4 className="w-[300px] flex-shrink-0"> {stage} </h4>
+                <div className="w-[300px] flex flex-col flex-shrink-0 gap-4" >
+                  <div className="flex items-center justify-start">
+                    <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
+                    <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({boardData.taskStages.length})</h4>
+                  </div>
                   {
                     stageTasks.map(stageTaks => (
-                      <article>
-                        <h5>Task title</h5>
+                      <article className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start">
+                        <h5 className="text-mainTextColor font-bold">Task title</h5>
                         <p>task description</p>
                       </article>
                     ))
                   }
                 </div>
-                    
               )}
             )
             }
+            <div className="w-[300px] h-full bg-[]">
+
+            </div>
           </div>
         )
         :

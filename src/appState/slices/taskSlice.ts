@@ -4,11 +4,16 @@ export interface Task {
   id: number;
   title: string;
   description: string;
-  subtask: string[];
+  subtasks: string[];
   stage: string;
 }
 
-const initialTasksState: Task[] = [];
+const initialTasksState: Task[] = [
+  {id: 1, title: "Task 1", description: "task1 description", subtasks: ["subtask 1", "subtasks 2"], stage: "Doing"},
+  {id: 2, title: "Task 2", description: "task2 description", subtasks: ["subtask 1", "subtasks 2"], stage: "Not started"},
+  {id: 3, title: "Task 3", description: "task3 description", subtasks: ["subtask 1", "subtasks 2"], stage: "Done"},
+  {id: 4, title: "Task 4", description: "task4 description", subtasks: ["subtask 1", "subtasks 2"], stage: "Doing"},
+];
 
 const taskSlice = createSlice({
   name: "tasks",

@@ -5,7 +5,7 @@ interface SelectedBoardSlice {
 }
 
 const initialState: SelectedBoardSlice = {
-  id: undefined
+  id: 1
 };
 
 export const selectedBoardSlice = createSlice({
