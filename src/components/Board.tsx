@@ -45,15 +45,21 @@ export default function Board () {
                 <div className={`w-[300px] ${isLastIndex ? "w-[326px] pr-[26px]" : ""} flex flex-col flex-shrink-0 gap-4`}>
                   <div className="flex items-center justify-start">
                     <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
-                    <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({boardData.taskStages.length})</h4>
+                    <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({stageTasks.length})</h4>
                   </div>
                   {
-                    stageTasks.map(stageTaks => (
-                      <article className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow">
-                        <h5 className="text-mainTextColor font-bold">Task title</h5>
-                        <p>task description</p>
-                      </article>
-                    ))
+                    stageTasks.map(stageTask => {
+                      //we calculate how many subtasks are completed by using a reduce function
+                      const subtasksCompleted = stageTask.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
+                      const totalSubtasks = stageTask.subtasks.length
+
+                      return (
+                        <article className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow">
+                          <h5 className="text-mainTextColor font-bold">{stageTask.title}</h5>
+                          <p className="text-[0.8rem] font-bold">{subtasksCompleted} of {totalSubtasks} subtasks</p>
+                        </article>
+                      )
+                    })
                   }
                 </div>
               )}

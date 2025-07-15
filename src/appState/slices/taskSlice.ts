@@ -14,10 +14,46 @@ export interface Task {
 }
 
 const initialTasksState: Task[] = [
-  {id: 1, title: "Task 1", description: "task1 description", subtasks: [{name: "subtask 1", done: false}, {name: "subtasks 2", done: true}], stage: "Doing"},
-  {id: 2, title: "Task 2", description: "task2 description", subtasks: [{name: "subtask 1", done: false}, {name: "subtasks 2", done: true}], stage: "Not started"},
-  {id: 3, title: "Task 3", description: "task3 description", subtasks: [{name: "subtask 1", done: false}, {name: "subtasks 2", done: true}], stage: "Done"},
-  {id: 4, title: "Task 4", description: "task4 description", subtasks: [{name: "subtask 1", done: false}, {name: "subtasks 2", done: true}], stage: "Doing"},
+  {id: 1,
+    title: "Task 1",
+    description: "task1 description",
+    subtasks: [
+      {name: "subtask 1",
+        done: false},
+      {name: "subtasks 2", done: true}
+    ],
+    stage: "Doing"
+  },
+  {id: 2,
+    title: "Task 2",
+    description: "task2 description",
+    subtasks: [
+      {name: "subtask 1",
+      done: true}, {name: "subtasks 2",
+      done: true}
+    ],
+    stage: "Not started"
+  },
+  {id: 3,
+    title: "Task 3",
+    description: "task3 description",
+    subtasks: [
+      {name: "subtask 1",
+      done: false}, {name: "subtasks 2",
+      done: true}
+    ],
+    stage: "Done"
+  },
+  {id: 4,
+    title: "Task 4",
+    description: "task4 description",
+    subtasks: [
+      {name: "subtask 1",
+      done: false}, {name: "subtasks 2",
+      done: true}
+    ],
+    stage: "Doing"
+  },
 ];
 
 const taskSlice = createSlice({
