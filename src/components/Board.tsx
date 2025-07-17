@@ -70,7 +70,7 @@ export default function Board () {
           <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
         }
 
-        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background">
+        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-backgroundSemi">
           <TaskDialog taskData={selectedTask} />
         </DialogContent>
 
