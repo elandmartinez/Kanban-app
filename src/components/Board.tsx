@@ -3,7 +3,7 @@ import { Task } from "@/appState/slices/taskSlice"
 import { RootState } from "@/appState/store"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import TasksColumn from "./TasksColumn"
+import TaskCard from "./TaskCard"
 
 function getBoardData (id: number, boards: BoardState[]) {
   const boardtoReturn = boards.find(board => board.id === id)
@@ -29,7 +29,7 @@ export default function Board () {
       setTasks(boardTasks)
       console.log({selectedBoard, boardData, boardTasks})
     }
-  }, [])
+  }, [allTasks, boardData, selectedBoard])
 
   return (
     <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
@@ -54,10 +54,7 @@ export default function Board () {
                       const totalSubtasks = stageTask.subtasks.length
 
                       return (
-                        <article className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow">
-                          <h5 className="text-mainTextColor font-bold">{stageTask.title}</h5>
-                          <p className="text-[0.8rem] font-bold">{subtasksCompleted} of {totalSubtasks} subtasks</p>
-                        </article>
+                        <TaskCard taskData={stageTask} subtasksCompleted={subtasksCompleted} totalSubtasks={totalSubtasks} />
                       )
                     })
                   }

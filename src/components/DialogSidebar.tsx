@@ -28,7 +28,6 @@ export default function DialogSidebar () {
           {boards.map((board, index) => {
             return (
               <li key={index} className="board-item flex max-w-[300px] rounded-r-3xl pl-6 py-4 cursor-pointer content-start items-center transition-all duration-300 board hover:bg-mainPurple hover:text-white">
-                {/* <img src={greyBoardIcon} alt="boardIcon" className="w-4 h-4 mr-2" /> */}
                 <Icon SvgComponent={greyBoardIcon} classname="board-icon w-4 h-4 mr-2" />
                 {board}
               </li>
