@@ -1,9 +1,12 @@
+import { Dialog, DialogTrigger, DialogContent, DialogOverlay } from "./ui/dialog"
+
 import { BoardState } from "@/appState/slices/boardSlices"
 import { Task } from "@/appState/slices/taskSlice"
 import { RootState } from "@/appState/store"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import TaskCard from "./TaskCard"
+import TaskDialog from "./TaskDialog"
 
 function getBoardData (id: number, boards: BoardState[]) {
   const boardtoReturn = boards.find(board => board.id === id)
@@ -18,6 +21,7 @@ function getBoardTasks (boardTaksStages: string[], tasks: Task[]) {
 
 export default function Board () {
   const [tasks, setTasks] = useState<Task[]>([])
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const selectedBoard = useSelector((state:RootState) => state.selectedBoard)
   const allTasks = useSelector((state: RootState) => state.tasks)
 
@@ -27,49 +31,53 @@ export default function Board () {
     if(boardData) { 
       const boardTasks = getBoardTasks(boardData?.taskStages, allTasks)
       setTasks(boardTasks)
-      console.log({selectedBoard, boardData, boardTasks})
     }
-  }, [allTasks, boardData, selectedBoard])
+  }, [allTasks, boardData, selectedBoard, selectedTask])
 
   return (
     <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
-      {
-        selectedBoard.id && boardData ? (
-          <div className="flex gap-6 w-full h-full items-start">
-            {
-              boardData.taskStages.map((stage, index) => {
-                const stageTasks = tasks.filter(task => task.stage === stage)
-                const isLastIndex = index === (boardData.taskStages.length - 1)
+      <Dialog open={!!selectedTask} onOpenChange={(open) => !open && setSelectedTask(null)}>
+        <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
 
-                return (
-                <div className={`w-[300px] ${isLastIndex ? "w-[326px] pr-[26px]" : ""} flex flex-col flex-shrink-0 gap-4`}>
-                  <div className="flex items-center justify-start">
-                    <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
-                    <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({stageTasks.length})</h4>
+        {
+          selectedBoard.id && boardData ? (
+            <div className="flex gap-6 w-full h-full items-start">
+              {
+                boardData.taskStages.map((stage, index) => {
+                  const stageTasks = tasks.filter(task => task.stage === stage)
+                  const isLastIndex = index === (boardData.taskStages.length - 1)
+
+                  return (
+                  <div key={index} className={`${isLastIndex ? "w-[326px] pr-[26px]" : "w-[300px]"} flex flex-col flex-shrink-0 gap-4`}>
+                    <div className="flex items-center justify-start">
+                      <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
+                      <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({stageTasks.length})</h4>
+                    </div>
+                    {
+                      stageTasks.map((stageTask, index) => (
+                        <DialogTrigger asChild key={index}>
+                          <TaskCard taskData={stageTask} setSelectedTask={setSelectedTask}/>
+                        </DialogTrigger>
+                      ))
+                    }
                   </div>
-                  {
-                    stageTasks.map(stageTask => {
-                      //we calculate how many subtasks are completed by using a reduce function
-                      const subtasksCompleted = stageTask.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
-                      const totalSubtasks = stageTask.subtasks.length
-
-                      return (
-                        <TaskCard taskData={stageTask} subtasksCompleted={subtasksCompleted} totalSubtasks={totalSubtasks} />
-                      )
-                    })
-                  }
-                </div>
-              )}
-            )
-            }
-            <div className="w-[300px] h-full bg-[]">
-
+                )}
+              )
+              }
             </div>
-          </div>
-        )
-        :
-        <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
-      }
+          )
+          :
+          <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
+        }
+
+        {selectedTask && (
+          console.log("Rendering DialogContent for selectedTask:", selectedTask),
+          <DialogContent className="p-8 text-start w-[400px] bg-background">
+            <TaskDialog taskData={selectedTask} />
+          </DialogContent>
+        )}
+
+      </Dialog>
     </div>
   )
 }

@@ -15,7 +15,7 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
   return (
     <header className="flex justify-between h-[10vh] items-center bg-background px-4 text-mainTextColor border-b border-linesColor">
       <Dialog>
-      <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
+        <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
 
         {/* minus sm screen sizes header logo */}
         <DialogTrigger asChild>
@@ -55,11 +55,13 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
           <>
             <DialogContent aria-describedby="Menu modal" className="border-0 w-[85%] max-w-[350px] h-[400px] p-0 bg-background rounded-xl text-secondaryTextColor text-[0.85rem] font-bold py-6">
               <DialogTitle>
-              <p className="text-[0.75rem] h-[20px] tracking-wider font-bold mt-4 pl-6">
-                ALL BOARDS (3)
-              </p>
-            </DialogTitle>
+                <p className="text-[0.75rem] h-[20px] tracking-wider font-bold mt-4 pl-6">
+                  ALL BOARDS (3)
+                </p>
+              </DialogTitle>
+
               <DialogSidebar />
+
             </DialogContent>
           </>
           :
