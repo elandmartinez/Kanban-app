@@ -70,12 +70,9 @@ export default function Board () {
           <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
         }
 
-        {selectedTask && (
-          console.log("Rendering DialogContent for selectedTask:", selectedTask),
-          <DialogContent className="p-8 text-start w-[400px] bg-background">
-            <TaskDialog taskData={selectedTask} />
-          </DialogContent>
-        )}
+        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background">
+          <TaskDialog taskData={selectedTask} />
+        </DialogContent>
 
       </Dialog>
     </div>

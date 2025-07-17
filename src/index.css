@@ -36,9 +36,9 @@
   --background: #20212C;
   --background-semi: #2B2C37;
   --main-text-color: #F4F7FD;
-  --secondary-text-color: #E4EBFA;
+  --secondary-text-color: #828FA3;
   --lines-color: #3E3F4E;
-  --check-input-bg: #E4EBFA;
+  --check-input-bg: rgba(255, 255, 255, 0.1);
   --bg-hover-shadow: rgba(255, 255, 255, 0.4); 
   --icons-secondary-color: #ffffff;
 }

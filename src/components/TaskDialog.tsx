@@ -5,15 +5,13 @@ interface TaskDialogProps {
   taskData: Task | null
 }
 
-export default function TaskDialog ({ taskData }: TaskDialogProps) {
-  console.log("Task dialog component rendered")
+export default function TaskDialog ({ taskData }: TaskDialogProps) {  
   return (
-    <div className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow hover:scale-105">
+    <div className="flex flex-col gap-4 text-start">
       <DialogTitle>
-        <h5 className="text-" >{taskData?.title}</h5>
+        <h5 className="text-mainTextColor font-bold" >{taskData?.title}</h5>
       </DialogTitle>
-      <h5 className="text-" >{taskData?.title}</h5>
-      <p> {taskData?.description} </p>
+      <p className="text-secondaryTextColor"> {taskData?.description} </p>
     </div>
   )
 }
