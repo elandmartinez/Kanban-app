@@ -3,21 +3,18 @@ import { editTask, Task } from "../appState/slices/taskSlice"
 import { DialogTitle } from "@radix-ui/react-dialog"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/appState/store"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-  
-} from "./ui/select"
-import { SelectPortal } from "@radix-ui/react-select"
+import { useState } from "react"
+import { ReactComponent as dropdownArror } from "../assets/icons/dropdown-arrow.svg"
+import Icon from "./Icon"
 
 interface TaskDialogProps {
   taskData: Task | null,
   boardStages: string[] | undefined
+}
+
+interface TaskSelectStageProps {
+  stages: string[] | undefined,
+  taskData: Task | undefined
 }
 
 export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) {  
@@ -61,25 +58,50 @@ export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) 
       </div>
       <div className="relative">
         <h5 className="text-[0.85rem] mb-1">Current Status</h5>
-          <Select>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder={currentTask?.stage} />
-            </SelectTrigger>
-
-        <SelectPortal>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Stages</SelectLabel>
-              {
-                boardStages?.map((stage, index) => (
-                  <SelectItem value={stage} key={index} >{stage}</SelectItem>
-                ))
-              }
-            </SelectGroup>
-          </SelectContent>
-        </SelectPortal>
-          </Select>
+        <SelectTaskStage stages={boardStages} taskData={currentTask} />
       </div>
+    </div>
+  )
+}
+
+function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
+  const [showStages, setShowStages] = useState(false)
+  const dispatch = useDispatch()
+
+  function udpdateTaksStage (taskId: number, newStage: string) {
+    if(taskData){
+      const newTaskData = {
+        ...taskData,
+        stage: newStage
+      }
+      dispatch(editTask({id: taskData?.id, newTask: newTaskData}))
+    } else {
+      throw Error("task data is undefined")
+    }
+  }
+
+  return (
+    <div className="text-[0.85rem] font-medium">
+      <button
+        className="z-20 relative w-full h-10 rounded-md border-[0.5px] flex justify-between items-center text-start border-secondaryTextColor bg-background px-3 transition-all duration-100 hover:bg-backgroundSemi active:bg-background"
+        onClick={() => { setShowStages(!showStages) }}
+      >
+        {taskData?.stage}
+        <Icon SvgComponent={dropdownArror} classname="w-5 h-5" />
+      </button>
+      <div className={`${showStages ? "h-[140px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[142px] overflow-y-auto left-0 top-[60px] rounded-b-xl`}>
+          {
+            stages?.map((stage, index) => {
+              const islastStage = index === stages.length-1
+              const isFirstStage = index === 0
+              return (
+                <div key={index} className={`px-2 py-3 bg-backgroundSemi hover:bg-mainPurpleLight hover:text-white ${islastStage ? "rounded-b-xl" : ""} ${isFirstStage ? "pt-[15px]": ""}`} >
+                  <p>{stage}</p>
+                </div>
+              )
+            })
+          }
+        </div>
     </div>
   )
 }

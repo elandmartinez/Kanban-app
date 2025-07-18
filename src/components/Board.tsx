@@ -36,7 +36,7 @@ export default function Board () {
 
   return (
     <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
-      <Dialog modal={false} open={!!selectedTask} onOpenChange={(open) => !open && setSelectedTask(null)}>
+      <Dialog open={!!selectedTask} onOpenChange={(open) => !open && setSelectedTask(null)}>
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
 
         {
@@ -70,7 +70,7 @@ export default function Board () {
           <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
         }
 
-        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-backgroundSemi !pointer-events-auto">
+        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
           <TaskDialog taskData={selectedTask} boardStages={boardData?.taskStages} />
         </DialogContent>
 

@@ -14,7 +14,7 @@
   --secondary-text-color: #828FA3;
   --lines-color: #E4EBFA;
   --check-input-bg: rgba(99, 95, 199, 0.2);
-  --secondary-purple: (99, 95, 199, 0.7);
+  --secondary-purple: rgb(47, 47, 56);
   --bg-hover-shadow: rgba(99, 95, 199, 0.1);
   --icons-secondary-color: #8a84ff;
 
@@ -86,4 +86,8 @@ body::-webkit-scrollbar {
 
 * {
   transition: all 300ms;
+}
+
+* ::-webkit-scrollbar {
+  display: none;
 }
