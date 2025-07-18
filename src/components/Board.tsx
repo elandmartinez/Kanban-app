@@ -71,7 +71,7 @@ export default function Board () {
         }
 
         <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
-          <TaskDialog taskData={selectedTask} boardStages={boardData?.taskStages} />
+          <TaskDialog taskId={selectedTask?.id} boardStages={boardData?.taskStages} />
         </DialogContent>
 
       </Dialog>

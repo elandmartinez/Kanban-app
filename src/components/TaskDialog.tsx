@@ -8,7 +8,7 @@ import { ReactComponent as dropdownArror } from "../assets/icons/dropdown-arrow.
 import Icon from "./Icon"
 
 interface TaskDialogProps {
-  taskData: Task | null,
+  taskId: number | undefined ,
   boardStages: string[] | undefined
 }
 
@@ -17,14 +17,14 @@ interface TaskSelectStageProps {
   taskData: Task | undefined
 }
 
-export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) {  
+export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {  
   const dispatch = useDispatch()
-  const currentTask = useSelector((state:RootState) => state.tasks).find(task => task.id === taskData?.id)
-  const subtasksCompleted = taskData?.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
-  const totalSubtasks = taskData?.subtasks.length
+  const currentTask = useSelector((state:RootState) => state.tasks).find(task => task.id === taskId)
+  const subtasksCompleted = currentTask?.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
+  const totalSubtasks = currentTask?.subtasks.length
 
   function updateSubtasksStatus(subtaskIndex: number, newDoneStatus: boolean) {
-    if (currentTask && taskData) {
+    if (currentTask) {
       // Create a new copy of the subtasks array
       const updatedSubtasks = currentTask?.subtasks.map((subtask, index) =>
         index === subtaskIndex ? { ...subtask, done: newDoneStatus } : subtask
@@ -32,12 +32,10 @@ export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) 
   
       
       // Create a new taskData object with the updated subtasks
-      const newTaskData = { ...taskData, subtasks: updatedSubtasks };
-      
-      console.log({ newSubtasks: updatedSubtasks, oldSubtaks: taskData.subtasks })
+      const newTaskData = { ...currentTask, subtasks: updatedSubtasks };
 
       // Dispatch the updated task data
-      dispatch(editTask({ id: taskData.id, newTask: newTaskData }));
+      dispatch(editTask({ id: currentTask.id, newTask: newTaskData }));
     }
   }
 
@@ -66,17 +64,20 @@ export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) 
   )
 }
 
+//////////////////////////////////////////////////////////////////////
+
 function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
   const [showStages, setShowStages] = useState(false)
   const dispatch = useDispatch()
 
-  function udpdateTaksStage (taskId: number, newStage: string) {
+  function udpdateTaksStage (taskId: number | undefined, newStage: string) {
     if(taskData){
       const newTaskData = {
         ...taskData,
         stage: newStage
       }
       dispatch(editTask({id: taskData?.id, newTask: newTaskData}))
+      setShowStages(false)
     } else {
       throw Error("task data is undefined")
     }
@@ -97,7 +98,11 @@ function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
               const islastStage = index === stages.length-1
               const isFirstStage = index === 0
               return (
-                <div key={index} className={`px-2 py-3 bg-backgroundSemi hover:bg-mainPurpleLight hover:text-white ${islastStage ? "rounded-b-xl" : ""} ${isFirstStage ? "pt-[15px]": ""}`} >
+                <div
+                  key={index}
+                  className={`px-2 py-3 bg-backgroundSemi hover:bg-mainPurple hover:text-white ${islastStage ? "rounded-b-xl" : ""} ${isFirstStage ? "pt-[15px]": ""}`}
+                  onClick={() => udpdateTaksStage(taskData?.id, stage)}
+                >
                   <p>{stage}</p>
                 </div>
               )
