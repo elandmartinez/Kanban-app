@@ -10,7 +10,7 @@ const boardsInitialState: BoardState[] = [
   {
     id: 1,
     name: "Platform Launch",
-    taskStages: ["Not started", "Doing", "hey", "what", "ok"]
+    taskStages: ["Not started", "Doing", "Done"]
   }
 ]
 

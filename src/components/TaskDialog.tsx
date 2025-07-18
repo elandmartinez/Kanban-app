@@ -24,15 +24,17 @@ export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) 
   const totalSubtasks = taskData?.subtasks.length
 
   function updateSubtasksStatus(subtaskIndex: number, newDoneStatus: boolean) {
-    if (taskData) {
+    if (currentTask && taskData) {
       // Create a new copy of the subtasks array
-      const updatedSubtasks = taskData.subtasks.map((subtask, index) =>
+      const updatedSubtasks = currentTask?.subtasks.map((subtask, index) =>
         index === subtaskIndex ? { ...subtask, done: newDoneStatus } : subtask
       );
   
+      
       // Create a new taskData object with the updated subtasks
       const newTaskData = { ...taskData, subtasks: updatedSubtasks };
-  
+      
+      console.log({ newSubtasks: updatedSubtasks, oldSubtaks: taskData.subtasks })
 
       // Dispatch the updated task data
       dispatch(editTask({ id: taskData.id, newTask: newTaskData }));
@@ -50,8 +52,8 @@ export default function TaskDialog ({ taskData, boardStages }: TaskDialogProps) 
         {
           currentTask?.subtasks.map((subtask, index) => (
             <div key={index} onClick={() => updateSubtasksStatus(index, !subtask.done) } className="bg-background rounded-[0.3rem] p-2 flex items-center text-secondaryTextColor text-[0.75rem]">
-              <Checkbox checked={subtask.done ? true: false} id="subtask" className="mr-2" />
-              <p className={`w-full ${subtask.done ? "text-mainTextColor": "line-through"}`}>{subtask.name}</p>
+              <Checkbox checked={subtask.done ? true : false} id="subtask" className="mr-2" />
+              <p className={`w-full ${subtask.done ? "line-through" : "text-mainTextColor"}`}>{subtask.name}</p>
             </div>
           ))
         }
@@ -81,7 +83,7 @@ function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
   }
 
   return (
-    <div className="text-[0.85rem] font-medium">
+    <div className="text-[0.85rem] font-light">
       <button
         className="z-20 relative w-full h-10 rounded-md border-[0.5px] flex justify-between items-center text-start border-secondaryTextColor bg-background px-3 transition-all duration-100 hover:bg-backgroundSemi active:bg-background"
         onClick={() => { setShowStages(!showStages) }}
@@ -89,7 +91,7 @@ function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
         {taskData?.stage}
         <Icon SvgComponent={dropdownArror} classname="w-5 h-5" />
       </button>
-      <div className={`${showStages ? "h-[140px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[142px] overflow-y-auto left-0 top-[60px] rounded-b-xl`}>
+      <div className={`${showStages ? "h-[140px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[142px] overflow-y-auto left-0 top-[60px] rounded-b-xl text-mainTextColor`}>
           {
             stages?.map((stage, index) => {
               const islastStage = index === stages.length-1
