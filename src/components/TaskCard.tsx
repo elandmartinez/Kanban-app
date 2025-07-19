@@ -7,7 +7,7 @@ interface TaskCardProps {
 
 export default function TaskCard ({ taskData, setSelectedTask }: TaskCardProps) {
   //we calculate how many subtasks are completed by using a reduce function
-  const subtasksCompleted = taskData.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
+  const subtasksCompleted = taskData.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : accumulator), 0)
   const totalSubtasks = taskData.subtasks.length
 
   return (

@@ -76,6 +76,7 @@ const taskSlice = createSlice({
       const index = state.findIndex(task => task.id === action.payload.id);
       if (index !== -1) {
         state[index] = action.payload.newTask;
+        console.log("taskshould be edited", {taskData: action.payload})
       } else {
         throw new Error("Task not found");
       }

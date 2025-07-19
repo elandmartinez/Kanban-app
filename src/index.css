@@ -19,7 +19,7 @@
   --icons-secondary-color: #8a84ff;
 
   /* separate */
-  --bg-white-hover: rgba(255, 255, 255, 0.4);
+  --bg-white-hover: rgba(255, 255, 255, 0.2);
   --bg-black-hover: rgba(0, 0, 0, 0.2);
 
   /* Purples */
@@ -39,7 +39,7 @@
   --secondary-text-color: #828FA3;
   --lines-color: #3E3F4E;
   --check-input-bg: rgba(255, 255, 255, 0.1);
-  --bg-hover-shadow: rgba(255, 255, 255, 0.4); 
+  --bg-hover-shadow: rgba(255, 255, 255, 0.2); 
   --icons-secondary-color: #ffffff;
 }
 

@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/appState/store"
 import { useState } from "react"
 import { ReactComponent as dropdownArror } from "../assets/icons/dropdown-arrow.svg"
+import { ReactComponent as deleteIcon } from "../assets/icons/delete.svg"
+import { ReactComponent as editIcon } from "../assets/icons/edit.svg"
 import Icon from "./Icon"
 
 interface TaskDialogProps {
@@ -20,7 +22,7 @@ interface TaskSelectStageProps {
 export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {  
   const dispatch = useDispatch()
   const currentTask = useSelector((state:RootState) => state.tasks).find(task => task.id === taskId)
-  const subtasksCompleted = currentTask?.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : 0), 0)
+  const subtasksCompleted = currentTask?.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : accumulator), 0)
   const totalSubtasks = currentTask?.subtasks.length
 
   function updateSubtasksStatus(subtaskIndex: number, newDoneStatus: boolean) {
@@ -30,7 +32,8 @@ export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {
         index === subtaskIndex ? { ...subtask, done: newDoneStatus } : subtask
       );
   
-      
+      console.log({subtaskIndex, newDoneStatus})
+
       // Create a new taskData object with the updated subtasks
       const newTaskData = { ...currentTask, subtasks: updatedSubtasks };
 
@@ -40,9 +43,13 @@ export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 text-start text-mainTextColor font-bold">
-      <DialogTitle>
+    <div className="flex flex-col gap-4 text-start text-mainTextColor font-bold py-4">
+      <DialogTitle className="flex justify-between w-full">
         <p className="text-mainTextColor text-[1.05rem] font-bold" >{currentTask?.title}</p>
+        <div className="flex mr-2 items-center">
+          <Icon SvgComponent={editIcon} classname="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" />
+          <Icon SvgComponent={deleteIcon} classname="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" />
+        </div>
       </DialogTitle>
       <p className="text-secondaryTextColor"> {currentTask?.description} </p>
       <div className="mt-2 w-full flex flex-col gap-2">
@@ -57,7 +64,7 @@ export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {
         }
       </div>
       <div className="relative">
-        <h5 className="text-[0.85rem] mb-1">Current Status</h5>
+        <h5 className="text-[0.85rem] mb-3">Current Status</h5>
         <SelectTaskStage stages={boardStages} taskData={currentTask} />
       </div>
     </div>
