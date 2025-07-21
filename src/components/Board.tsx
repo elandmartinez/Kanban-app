@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import TaskCard from "./TaskCard"
 import TaskDialog from "./TaskDialog"
 import EditTaskDialog from "./EditTaskDialog."
+import AddTaskDialog from "./AddTaskDialog"
 
 function getBoardData (id: number, boards: BoardState[]) {
   const boardtoReturn = boards.find(board => board.id === id)
@@ -25,6 +26,7 @@ export default function Board () {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const [openTaskDataDialog, setOpenTaskDataDialog] = useState(false)
   const [openEditTaskDialog, setOpenEditTaskDialog] = useState(false)
+  const [openAddTaskDialog, setOpenAddTaskDialog] = useState(false)
   const [openAddBoardDialog, setOpenAddBoardDialog] = useState(false)
   const [openEditBoardDialog, setOpenEditBoardDialog] = useState(false)
   const [openDeleteTaskDialog, setOpenDeleteTaskDialog] = useState(false)
@@ -60,7 +62,11 @@ export default function Board () {
                     </div>
                     {
                       stageTasks.map((stageTask, index) => (
-                        <TaskCard taskData={stageTask} setSelectedTask={setSelectedTask} setOpenTaskDataDialog={setOpenTaskDataDialog}/>
+                        <TaskCard 
+                          taskData={stageTask}
+                          setSelectedTask={setSelectedTask}
+                          setOpenTaskDataDialog={setOpenTaskDataDialog}
+                        />
                       ))
                     }
                   </div>
@@ -73,19 +79,27 @@ export default function Board () {
           <h4 className="text-[1.1rem]" >Select a board to display its data here</h4>
         }
 
+      {/* //task data dialog */}
+
       <Dialog open={openTaskDataDialog} onOpenChange={(open) => !open && setOpenTaskDataDialog(false)}>
 
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
-          <TaskDialog taskId={selectedTask?.id} boardStages={boardData?.taskStages} />
+          <TaskDialog
+            taskId={selectedTask?.id}
+            boardStages={boardData?.taskStages}
+            setOpenAddTaskDialog={setOpenAddTaskDialog}
+          />
         </DialogContent>
 
       </Dialog>
 
-      <Dialog>
+      {/* Add task Dialog */}
+
+      <Dialog open={openAddTaskDialog} onOpenChange={(open) => !open && setOpenAddTaskDialog(false) } >
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent>
-          <EditTaskDialog  />
+          <AddTaskDialog />
         </DialogContent>
       </Dialog>
     </div>

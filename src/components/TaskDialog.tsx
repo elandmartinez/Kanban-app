@@ -4,14 +4,15 @@ import { DialogTitle } from "@radix-ui/react-dialog"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/appState/store"
 import { useState } from "react"
-import { ReactComponent as dropdownArror } from "../assets/icons/dropdown-arrow.svg"
+import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.svg"
 import { ReactComponent as deleteIcon } from "../assets/icons/delete.svg"
 import { ReactComponent as editIcon } from "../assets/icons/edit.svg"
 import Icon from "./Icon"
 
 interface TaskDialogProps {
   taskId: number | undefined ,
-  boardStages: string[] | undefined
+  boardStages: string[] | undefined,
+  setOpenAddTaskDialog: Function,
 }
 
 interface TaskSelectStageProps {
@@ -19,7 +20,7 @@ interface TaskSelectStageProps {
   taskData: Task | undefined
 }
 
-export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {  
+export default function TaskDialog ({ taskId, boardStages, setOpenAddTaskDialog}: TaskDialogProps) {  
   const dispatch = useDispatch()
   const currentTask = useSelector((state:RootState) => state.tasks).find(task => task.id === taskId)
   const subtasksCompleted = currentTask?.subtasks.reduce((accumulator, current) => (current.done ? accumulator+1 : accumulator), 0)
@@ -46,9 +47,13 @@ export default function TaskDialog ({ taskId, boardStages }: TaskDialogProps) {
     <div className="flex flex-col gap-4 text-start text-mainTextColor font-bold py-4">
       <DialogTitle className="flex justify-between w-full">
         <p className="text-mainTextColor text-[1.05rem] font-bold" >{currentTask?.title}</p>
-        <div className="flex mr-2 items-center">
-          <Icon SvgComponent={editIcon} classname="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" />
-          <Icon SvgComponent={deleteIcon} classname="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" />
+        <div className="flex mr-2 items-center" onClick={() => { setOpenAddTaskDialog(true) }}>
+          <div className="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" >
+            <Icon SvgComponent={editIcon} classname="w-full h-full" />
+          </div>
+          <div className="w-8 h-8 py-2 px-2 rounded-3xl hover:bg-bgHoverShadow" >
+            <Icon SvgComponent={deleteIcon} classname="w-full h-full" />
+          </div>
         </div>
       </DialogTitle>
       <p className="text-secondaryTextColor"> {currentTask?.description} </p>
@@ -97,7 +102,7 @@ function SelectTaskStage ({ stages, taskData }: TaskSelectStageProps) {
         onClick={() => { setShowStages(!showStages) }}
       >
         {taskData?.stage}
-        <Icon SvgComponent={dropdownArror} classname="w-5 h-5" />
+        <Icon SvgComponent={dropdownArrow} classname="w-5 h-5" />
       </button>
       <div className={`${showStages ? "h-[140px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[142px] overflow-y-auto left-0 top-[60px] rounded-b-xl text-mainTextColor`}>
           {

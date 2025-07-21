@@ -3,7 +3,7 @@ import { Task } from "@/appState/slices/taskSlice"
 interface TaskCardProps {
   taskData: Task,
   setSelectedTask: Function,
-  setOpenTaskDataDialog: Function,
+  setOpenTaskDataDialog: Function
 }
 
 export default function TaskCard ({ taskData, setSelectedTask, setOpenTaskDataDialog }: TaskCardProps) {
