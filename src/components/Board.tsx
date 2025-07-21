@@ -63,6 +63,7 @@ export default function Board () {
                     {
                       stageTasks.map((stageTask, index) => (
                         <TaskCard 
+                          key={index}
                           taskData={stageTask}
                           setSelectedTask={setSelectedTask}
                           setOpenTaskDataDialog={setOpenTaskDataDialog}
@@ -84,7 +85,7 @@ export default function Board () {
       <Dialog open={openTaskDataDialog} onOpenChange={(open) => !open && setOpenTaskDataDialog(false)}>
 
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
-        <DialogContent className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
+        <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
           <TaskDialog
             taskId={selectedTask?.id}
             boardStages={boardData?.taskStages}
@@ -98,7 +99,7 @@ export default function Board () {
 
       <Dialog open={openAddTaskDialog} onOpenChange={(open) => !open && setOpenAddTaskDialog(false) } >
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
-        <DialogContent>
+        <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
           <AddTaskDialog />
         </DialogContent>
       </Dialog>

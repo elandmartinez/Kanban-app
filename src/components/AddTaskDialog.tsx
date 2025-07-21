@@ -4,6 +4,7 @@ import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.
 import Icon from "./Icon";
 import { editTask, Task } from "@/appState/slices/taskSlice";
 import { useDispatch } from "react-redux";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 export default function AddTaskDialog () {
   const [title, setTitle] = useState("Add authentication endpoints");
@@ -26,17 +27,21 @@ export default function AddTaskDialog () {
       e.preventDefault();
       // handle form data here
       const formData = new FormData(e.currentTarget as HTMLFormElement)
-      console.log({formData})
+      const formEntries = Object.fromEntries(formData.entries())
+      console.log(formEntries)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md space-y-6 max-h-[500px] overflow-y-auto">
+    <form onSubmit={handleSubmit} className="w-full max-w-[500px] px-2 text-secondaryTextColor max-h-[520px] overflow-y-auto">
       {/* Title & Description */}
       <div>
-        <h2 className="text-lg font-semibold mb-4">Add Task</h2>
+        <DialogTitle className="text-lg text-mainTextColor font-semibold mb-2" >
+          Add Task
+        </DialogTitle>
 
         <label className="block text-sm font-medium mb-1">Title</label>
         <input
+          name="title"
           type="text"
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
           value={title}
@@ -45,6 +50,7 @@ export default function AddTaskDialog () {
 
         <label className="block text-sm font-medium mt-4 mb-1">Description</label>
         <textarea
+          name="description"
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary resize-none"
           rows={3}
           value={description}
@@ -62,6 +68,7 @@ export default function AddTaskDialog () {
             value={subtask}
             onChange={(value) => updateSubtask(i, value)}
             onRemove={() => removeSubtask(i)}
+            index={i}
           />
         ))}
         <button
@@ -77,6 +84,7 @@ export default function AddTaskDialog () {
       <div>
         <label className="block text-sm font-medium mb-1">Status</label>
         <select
+          name="stage"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
@@ -90,7 +98,7 @@ export default function AddTaskDialog () {
       {/* Save Button */}
       <button
         type="submit"
-        className="w-full bg-violet-600 text-white py-2 rounded-full font-semibold hover:bg-violet-700 transition"
+        className="w-full bg-violet-600 text-white py-2  mt-4 rounded-full font-semibold hover:bg-violet-700 transition"
       >
         Save Changes
       </button>

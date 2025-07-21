@@ -56,6 +56,7 @@ export default function EditTaskDialog () {
             value={subtask}
             onChange={(value) => updateSubtask(i, value)}
             onRemove={() => removeSubtask(i)}
+            index={i}
           />
         ))}
         <button
