@@ -35,8 +35,9 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-[0.5rem]">
-          <button className="
-            interactable bg-mainPurple h-[28px] text-white border-none px-4 flex items-center rounded-[20px] cursor-pointer
+          <button
+            onClick={() => {setOpenAddTaskDialog(true)}}
+            className="interactable bg-mainPurple h-[28px] text-white border-none px-4 flex items-center rounded-[20px] cursor-pointer
             hover:bg-mainPurpleLight hover:text-white sm:py-1 sm:h-[36px]"
           >
             <Icon SvgComponent={plusIcon} classname="w-[12px] h-[12px] sm:mr-2" />
