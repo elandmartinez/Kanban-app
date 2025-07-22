@@ -1,7 +1,11 @@
 import { useState } from "react";
 import FormSubitem from "./FormSubitem";
 
-export default function EditTaskDialog () {
+interface AddTaskDialogProps {
+  selectedTaskId: number | undefined
+}
+
+export default function EditTaskDialog ({selectedTaskId}: AddTaskDialogProps) {
   const [title, setTitle] = useState("Add authentication endpoints");
   const [description, setDescription] = useState("");
   const [subtasks, setSubtasks] = useState(["Define user model", "Add auth endpoints"]);

@@ -2,15 +2,16 @@ import { useState } from "react";
 import FormSubitem from "./FormSubitem";
 import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.svg"
 import Icon from "./Icon";
-import { editTask, Task } from "@/appState/slices/taskSlice";
-import { useDispatch } from "react-redux";
+import { addTask, Task } from "../appState/slices/taskSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import { RootState } from "../appState/store";
+
 
 export default function AddTaskDialog () {
-  const [title, setTitle] = useState("Add authentication endpoints");
-  const [description, setDescription] = useState("");
   const [subtasks, setSubtasks] = useState(["Define user model", "Add auth endpoints"]);
-  const [status, setStatus] = useState("Doing");
+  const alltasks = useSelector((state:RootState) => state.tasks)
+  const dispatch = useDispatch()
 
   const addSubtask = () => setSubtasks([...subtasks, ""]);
   const updateSubtask = (index: number, value: string) => {
@@ -24,11 +25,27 @@ export default function AddTaskDialog () {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      // handle form data here
-      const formData = new FormData(e.currentTarget as HTMLFormElement)
-      const formEntries = Object.fromEntries(formData.entries())
-      console.log(formEntries)
+    e.preventDefault();
+    // handle form data here
+    const formData = new FormData(e.currentTarget as HTMLFormElement)
+    const formEntries = Object.fromEntries(formData.entries())
+
+    const newTaskSubtasks = []
+    for (let entry in formEntries) {
+      if(entry.includes("subtask")) newTaskSubtasks.push({name: String(formEntries[entry]), done: false})
+    }
+    
+    const taskToCreate = {
+      id: alltasks.length,
+      title: String(formEntries.title),
+      description: String(formEntries.description),
+      stage: String(formEntries.stage),
+      subtasks: newTaskSubtasks
+    }
+    console.log({formEntries, taskToCreate})
+      
+    dispatch(addTask(taskToCreate))
+
   };
 
   return (
@@ -44,8 +61,6 @@ export default function AddTaskDialog () {
           name="title"
           type="text"
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
         />
 
         <label className="block text-sm font-medium mt-4 mb-1">Description</label>
@@ -53,8 +68,6 @@ export default function AddTaskDialog () {
           name="description"
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary resize-none"
           rows={3}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
           placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
         />
       </div>
@@ -85,8 +98,6 @@ export default function AddTaskDialog () {
         <label className="block text-sm font-medium mb-1">Status</label>
         <select
           name="stage"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
         >
           <option value="Todo">Todo</option>
