@@ -74,7 +74,7 @@ export default function Header ({ isUnderSmScreen }: HeaderProps) {
       <Dialog open={openAddTaskDialog} onOpenChange={(open) => !open && setOpenAddTaskDialog(false) } >
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
-          <AddTaskDialog />
+          <AddTaskDialog setOpenAddTaskDialog={setOpenAddTaskDialog} />
         </DialogContent>
       </Dialog>
     </header>

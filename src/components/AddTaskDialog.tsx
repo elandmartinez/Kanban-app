@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { RootState } from "../appState/store";
 
+interface AddTaskDialogProps {
+  setOpenAddTaskDialog: Function
+}
 
-export default function AddTaskDialog () {
+export default function AddTaskDialog ({ setOpenAddTaskDialog }: AddTaskDialogProps) {
   const [subtasks, setSubtasks] = useState(["Define user model", "Add auth endpoints"]);
   const alltasks = useSelector((state:RootState) => state.tasks)
   const dispatch = useDispatch()
@@ -42,10 +45,8 @@ export default function AddTaskDialog () {
       stage: String(formEntries.stage),
       subtasks: newTaskSubtasks
     }
-    console.log({formEntries, taskToCreate})
-      
     dispatch(addTask(taskToCreate))
-
+    setOpenAddTaskDialog(false)
   };
 
   return (
