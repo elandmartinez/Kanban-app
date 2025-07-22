@@ -64,7 +64,7 @@ export default function TaskDialog ({ taskId, boardStages, setOpenEditTaskDialog
       </div>
       <div className="relative">
         <h5 className="text-[0.85rem] mb-3">Current Status</h5>
-        <DropdownSelector stages={boardStages} taskData={currentTask} shouldUpdateStateOnChange={true} />
+        <DropdownSelector stages={boardStages} taskData={currentTask} shouldUpdateStateOnChange={true} optionalSetStageStateFunc={undefined} />
       </div>
     </div>
   )
