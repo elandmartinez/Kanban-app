@@ -13,7 +13,7 @@ export default function FormSubitem ({ value, onChange, onRemove, index }: subIt
       <input
         name={`subtask${index}`}
         type="text"
-        className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
+        className="w-full bg-backgroundSemi rounded border px-3 py-2 text-sm text-secondaryTextColor font-semibold outline-none focus:ring-2 focus:ring-primary"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Subtask name"

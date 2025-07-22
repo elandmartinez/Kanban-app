@@ -44,6 +44,7 @@ module.exports = {
         secondaryPurple: "var(--secondary-purple)",
         bgHoverShadow: "var(--bg-hover-shadow)",
         iconsSecodaryColor: "var(--icons-secondary-color)",
+        transluscentDarkPurple: "var(--transluscent-dark-purple)",
 
         mainPurple: "var(--main-purple)",
         mainPurpleLight: "var(--main-purple-light)",

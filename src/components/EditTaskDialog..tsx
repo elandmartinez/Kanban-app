@@ -3,14 +3,16 @@ import FormSubitem from "./FormSubitem";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../appState/store";
-import { editTask } from "../appState/slices/taskSlice";
+import { editTask, Subtask } from "../appState/slices/taskSlice";
+import DropdownSelector from "./DropdownSelector";
 
 interface AddTaskDialogProps {
+  boardStages: string[] | undefined,
   selectedTaskId: number | undefined,
   setOpenEditTaskDialog: Function
 }
 
-export default function EditTaskDialog ({selectedTaskId, setOpenEditTaskDialog}: AddTaskDialogProps) {
+export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEditTaskDialog}: AddTaskDialogProps) {
   const tasksData = useSelector((state:RootState) => state.tasks)
   const taskData = tasksData.find(task => task.id === selectedTaskId)
   const [taskTitle, setTaskTitle] = useState(taskData?.title || "")
@@ -62,18 +64,18 @@ export default function EditTaskDialog ({selectedTaskId, setOpenEditTaskDialog}:
           Edit Task
         </DialogTitle>
 
-        <label className="block text-sm font-medium mb-1">Title</label>
+        <label className="block text-sm mb-1 font-semibold">Title</label>
         <input
           type="text"
           name="title"
-          className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
+          className="bg-backgroundSemi w-full text-secondaryTextColor font-semibold rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
         />
 
-        <label className="block text-sm font-medium mt-4 mb-1">Description</label>
+        <label className="block text-sm font-semibold mt-4 mb-1">Description</label>
         <textarea
-          className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary resize-none"
+          className="bg-backgroundSemi w-full rounded border px-3 py-2 text-sm text-secondaryTextColor font-semibold outline-none focus:ring-2 focus:ring-primary resize-none"
           rows={3}
           name="description"
           value={taskDescription}
@@ -84,7 +86,7 @@ export default function EditTaskDialog ({selectedTaskId, setOpenEditTaskDialog}:
 
       {/* Subtasks */}
       <div>
-        <label className="block text-sm font-medium mb-2">Subtasks</label>
+        <label className="block text-sm font-semibold mb-2">Subtasks</label>
         {temporarySubtasks.map((subtask, i) => (
           <FormSubitem
             key={i}
@@ -97,31 +99,22 @@ export default function EditTaskDialog ({selectedTaskId, setOpenEditTaskDialog}:
         <button
           type="button"
           onClick={addSubtask}
-          className="w-full mt-2 py-2 rounded-xl bg-violet-100 text-violet-700 text-sm font-medium hover:bg-violet-200"
+          className="w-full mt-2 py-2 rounded-xl bg-transluscentDarkPurple text-mainPurple text-sm font-semibold hover:bg-backgroundSemi"
         >
           + Add New Subtask
         </button>
       </div>
 
       {/* Stage */}
-      <div>
-        <label className="block text-sm font-medium mb-1">Stage</label>
-        <select
-          value={taskStage}
-          name="stage"
-          onChange={(e) => setTaskStage(e.target.value)}
-          className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
-        >
-          <option value="Todo">Todo</option>
-          <option value="Doing">Doing</option>
-          <option value="Done">Done</option>
-        </select>
+      <div className="relative">
+        <label className="block text-sm font-semibold mb-1">Stage</label>
+        <DropdownSelector stages={boardStages} taskData={taskData} shouldUpdateStateOnChange={false} />
       </div>
 
       {/* Save Button */}
       <button
         type="submit"
-        className="w-full bg-violet-600 text-white py-2 rounded-full font-semibold hover:bg-violet-700 transition"
+        className="w-full bg-mainPurpleLight text-white py-2 rounded-full font-semibold hover:bg-mainPurple transition duration-300"
       >
         Save Changes
       </button>

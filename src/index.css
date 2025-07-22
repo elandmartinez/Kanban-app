@@ -25,6 +25,7 @@
   /* Purples */
   --main-purple: #635FC7; 
   --main-purple-light: #8a84ff; 
+  --transluscent-dark-purple: rgba(99, 95, 199, 0.3);
   --main-purple-shadow: rgba(99, 95, 199, 0.1);
 
   /* Reds */

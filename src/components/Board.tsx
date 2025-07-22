@@ -100,7 +100,7 @@ export default function Board () {
       <Dialog open={openEditTaskDialog} onOpenChange={(open) => !open && setOpenEditTaskDialog(false) } >
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
-          <EditTaskDialog selectedTaskId={selectedTask?.id} setOpenEditTaskDialog={setOpenEditTaskDialog} />
+          <EditTaskDialog boardStages={boardData?.taskStages} selectedTaskId={selectedTask?.id} setOpenEditTaskDialog={setOpenEditTaskDialog} />
         </DialogContent>
       </Dialog>
 
