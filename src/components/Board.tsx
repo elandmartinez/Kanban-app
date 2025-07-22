@@ -26,7 +26,6 @@ export default function Board () {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const [openTaskDataDialog, setOpenTaskDataDialog] = useState(false)
   const [openEditTaskDialog, setOpenEditTaskDialog] = useState(false)
-  const [openAddTaskDialog, setOpenAddTaskDialog] = useState(false)
   const [openAddBoardDialog, setOpenAddBoardDialog] = useState(false)
   const [openEditBoardDialog, setOpenEditBoardDialog] = useState(false)
   const [openDeleteTaskDialog, setOpenDeleteTaskDialog] = useState(false)
@@ -89,7 +88,7 @@ export default function Board () {
           <TaskDialog
             taskId={selectedTask?.id}
             boardStages={boardData?.taskStages}
-            setOpenAddTaskDialog={setOpenAddTaskDialog}
+            setOpenEditTaskDialog={setOpenEditTaskDialog}
           />
         </DialogContent>
 
@@ -97,14 +96,8 @@ export default function Board () {
 
       {/* Add task Dialog */}
 
-      <Dialog open={openAddTaskDialog} onOpenChange={(open) => !open && setOpenAddTaskDialog(false) } >
-        <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
-        <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
-          <AddTaskDialog />
-        </DialogContent>
-      </Dialog>
 
-      <Dialog open={openAddTaskDialog} onOpenChange={(open) => !open && setOpenAddTaskDialog(false) } >
+      <Dialog open={openEditTaskDialog} onOpenChange={(open) => !open && setOpenEditTaskDialog(false) } >
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
           <EditTaskDialog selectedTaskId={selectedTask?.id} />
