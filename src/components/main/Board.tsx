@@ -1,14 +1,13 @@
-import { Dialog, DialogTrigger, DialogContent, DialogOverlay } from "./ui/dialog"
+import { Dialog, DialogContent, DialogOverlay } from "../ui/dialog"
 
 import { BoardState } from "@/appState/slices/boardSlices"
 import { Task } from "@/appState/slices/taskSlice"
 import { RootState } from "@/appState/store"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import TaskCard from "./TaskCard"
-import TaskDialog from "./TaskDialog"
-import EditTaskDialog from "./EditTaskDialog."
-import AddTaskDialog from "./AddTaskDialog"
+import TaskCard from "../secondary/TaskCard"
+import TaskDialog from "../dialogs/TaskDialog"
+import EditTaskDialog from "../dialogs/EditTaskDialog"
 
 function getBoardData (id: number, boards: BoardState[]) {
   const boardtoReturn = boards.find(board => board.id === id)

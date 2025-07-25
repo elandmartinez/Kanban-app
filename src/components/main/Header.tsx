@@ -1,12 +1,12 @@
-import { Dialog, DialogTrigger, DialogContent, DialogOverlay } from "./ui/dialog"
+import { Dialog, DialogTrigger, DialogContent, DialogOverlay } from "../ui/dialog"
 import { DialogTitle } from "@radix-ui/react-dialog"
 
-import DialogSidebar from "./DialogSidebar"
-import logo from  "../assets/logo.png"
-import Icon from "./Icon"
-import {ReactComponent as dotsIcon} from "../assets/icons/dots.svg"
-import {ReactComponent as plusIcon} from "../assets/icons/plus.svg"
-import AddTaskDialog from "./AddTaskDialog"
+import DialogSidebar from "../dialogs/DialogSidebar"
+import logo from  "../../assets/logo.png"
+import Icon from "../secondary/Icon"
+import {ReactComponent as dotsIcon} from "../../assets/icons/dots.svg"
+import {ReactComponent as plusIcon} from "../../assets/icons/plus.svg"
+import AddTaskDialog from "../dialogs/AddTaskDialog"
 import { useState } from "react"
 
 interface HeaderProps {

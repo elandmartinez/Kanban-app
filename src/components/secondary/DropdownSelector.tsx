@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { editTask, Task } from "../appState/slices/taskSlice"
-import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.svg"
+import { editTask, Task } from "../../appState/slices/taskSlice"
+import { ReactComponent as dropdownArrow } from "../../assets/icons/dropdown-arrow.svg"
 import Icon from "./Icon"
 
 interface TaskSelectStageProps {

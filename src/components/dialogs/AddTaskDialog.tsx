@@ -1,11 +1,11 @@
 import { useState } from "react";
-import FormSubitem from "./FormSubitem";
-import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.svg"
-import Icon from "./Icon";
-import { addTask, Task } from "../appState/slices/taskSlice";
+import FormSubitem from "../secondary/FormSubitem";
+import { ReactComponent as dropdownArrow } from "../../assets/icons/dropdown-arrow.svg"
+import Icon from "../secondary/Icon";
+import { addTask, Task } from "../../appState/slices/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import { RootState } from "../appState/store";
+import { RootState } from "../../appState/store";
 
 interface AddTaskDialogProps {
   setOpenAddTaskDialog: Function

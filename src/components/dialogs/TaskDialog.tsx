@@ -1,12 +1,12 @@
-import { Checkbox } from "../components/ui/checkbox"
-import { editTask } from "../appState/slices/taskSlice"
+import { Checkbox } from "../ui/checkbox"
+import { editTask } from "../../appState/slices/taskSlice"
 import { DialogTitle } from "@radix-ui/react-dialog"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/appState/store"
-import { ReactComponent as deleteIcon } from "../assets/icons/delete.svg"
-import { ReactComponent as editIcon } from "../assets/icons/edit.svg"
-import Icon from "./Icon"
-import DropdownSelector from "./DropdownSelector"
+import { ReactComponent as deleteIcon } from "../../assets/icons/delete.svg"
+import { ReactComponent as editIcon } from "../../assets/icons/edit.svg"
+import Icon from "../secondary/Icon"
+import DropdownSelector from "../secondary/DropdownSelector"
 
 interface TaskDialogProps {
   taskId: number | undefined ,

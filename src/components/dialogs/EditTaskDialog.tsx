@@ -1,10 +1,10 @@
 import { useState } from "react";
-import FormSubitem from "./FormSubitem";
+import FormSubitem from "../secondary/FormSubitem";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../appState/store";
-import { editTask, Subtask } from "../appState/slices/taskSlice";
-import DropdownSelector from "./DropdownSelector";
+import { RootState } from "../../appState/store";
+import { editTask } from "../../appState/slices/taskSlice";
+import DropdownSelector from "../secondary/DropdownSelector";
 
 interface AddTaskDialogProps {
   boardStages: string[] | undefined,
