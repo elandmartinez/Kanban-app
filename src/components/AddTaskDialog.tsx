@@ -14,6 +14,9 @@ interface AddTaskDialogProps {
 export default function AddTaskDialog ({ setOpenAddTaskDialog }: AddTaskDialogProps) {
   const [subtasks, setSubtasks] = useState(["Define user model", "Add auth endpoints"]);
   const alltasks = useSelector((state:RootState) => state.tasks)
+  const selectedBoard = useSelector((state: RootState) => state.selectedBoard)
+  const allBoards = useSelector((state: RootState) => state.boards)
+  const currentBoard = allBoards.find(board => board.id === selectedBoard.id)
   const dispatch = useDispatch()
 
   const addSubtask = () => setSubtasks([...subtasks, ""]);
@@ -104,6 +107,11 @@ export default function AddTaskDialog ({ setOpenAddTaskDialog }: AddTaskDialogPr
           <option value="Todo">Todo</option>
           <option value="Doing">Doing</option>
           <option value="Done">Done</option>
+          {
+            currentBoard?.taskStages.map((stage, index) => (
+              <option value={stage} key={index} >{stage}</option>
+            ))
+          }
         </select>
       </div>
 
