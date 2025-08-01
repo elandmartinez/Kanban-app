@@ -107,7 +107,6 @@ export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEdi
 
       {/* Stage */}
       <div className="relative">
-        <label className="block text-sm font-semibold mb-1">Stage</label>
         <DropdownSelector stages={boardStages} taskData={taskData} shouldUpdateStateOnChange={false} optionalSetStageStateFunc={setTaskStage}/>
       </div>
 
