@@ -1,12 +1,13 @@
-import { Checkbox } from "../components/ui/checkbox"
-import { editTask } from "../appState/slices/taskSlice"
+import { Checkbox } from "../ui/checkbox"
+import { editTask } from "../../appState/slices/taskSlice"
 import { DialogTitle } from "@radix-ui/react-dialog"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/appState/store"
-import { ReactComponent as deleteIcon } from "../assets/icons/delete.svg"
-import { ReactComponent as editIcon } from "../assets/icons/edit.svg"
-import Icon from "./Icon"
-import DropdownSelector from "./DropdownSelector"
+import { ReactComponent as deleteIcon } from "../../assets/icons/delete.svg"
+import { ReactComponent as editIcon } from "../../assets/icons/edit.svg"
+import Icon from "../secondary/Icon"
+import DropdownSelector from "../secondary/DropdownSelector"
+import { useState } from "react"
 
 interface TaskDialogProps {
   taskId: number | undefined ,
@@ -64,7 +65,13 @@ export default function TaskDialog ({ taskId, boardStages, setOpenEditTaskDialog
       </div>
       <div className="relative">
         <h5 className="text-[0.85rem] mb-3">Current Status</h5>
-        <DropdownSelector stages={boardStages} taskData={currentTask} shouldUpdateStateOnChange={true} optionalSetStageStateFunc={undefined} />
+        <DropdownSelector
+          stages={boardStages}
+          taskData={currentTask}
+          shouldUpdateStateOnChange={true}
+          temporaryStageState={undefined}
+          setTemporaryStage={undefined}
+        />
       </div>
     </div>
   )

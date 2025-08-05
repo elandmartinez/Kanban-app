@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import MainSection from "./components/MainSection";
+import Header from "./components/main/Header";
+import MainSection from "./components/main/MainSection";
 import "./index.css"
 import { useSelector } from "react-redux";
 import { RootState } from "./appState/store";

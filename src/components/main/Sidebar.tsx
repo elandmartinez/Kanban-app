@@ -1,12 +1,12 @@
-import { ReactComponent as moonIcon } from "../assets/icons/moon.svg"
-import { ReactComponent as greyBoardIcon } from "../assets/icons/kanban-board.svg"
-import { ReactComponent as sunIcon } from "../assets/icons/sun.svg"
-import { ReactComponent as eyeIcon } from "../assets/icons/eye.svg"
-import { Switch } from "./ui/switch"
-import Icon from "./Icon"
+import { ReactComponent as moonIcon } from "../../assets/icons/moon.svg"
+import { ReactComponent as greyBoardIcon } from "../../assets/icons/kanban-board.svg"
+import { ReactComponent as sunIcon } from "../../assets/icons/sun.svg"
+import { ReactComponent as eyeIcon } from "../../assets/icons/eye.svg"
+import { Switch } from "../ui/switch"
+import Icon from "../secondary/Icon"
 import { useRef, useState } from "react"
 import { useDispatch } from "react-redux"
-import { markCheck, markUncheck } from "../appState/slices/darkModeSlice"
+import { markCheck, markUncheck } from "../../appState/slices/darkModeSlice"
 
 const boards = ["Platform Launch", "Marketing Plan", "Roadmap"]
 

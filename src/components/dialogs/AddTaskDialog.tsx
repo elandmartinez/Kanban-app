@@ -1,11 +1,11 @@
 import { useState } from "react";
-import FormSubitem from "./FormSubitem";
-import { ReactComponent as dropdownArrow } from "../assets/icons/dropdown-arrow.svg"
-import Icon from "./Icon";
-import { addTask, Task } from "../appState/slices/taskSlice";
+import FormSubitem from "../secondary/FormSubitem";
+import { ReactComponent as dropdownArrow } from "../../assets/icons/dropdown-arrow.svg"
+import Icon from "../secondary/Icon";
+import { addTask, Task } from "../../appState/slices/taskSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import { RootState } from "../appState/store";
+import { RootState } from "../../appState/store";
 
 interface AddTaskDialogProps {
   setOpenAddTaskDialog: Function
@@ -16,7 +16,7 @@ export default function AddTaskDialog ({ setOpenAddTaskDialog }: AddTaskDialogPr
   const alltasks = useSelector((state:RootState) => state.tasks)
   const selectedBoard = useSelector((state: RootState) => state.selectedBoard)
   const allBoards = useSelector((state: RootState) => state.boards)
-  const currentBoard = allBoards.find(board => board.id === selectedBoard.id)
+  const currentBoard = allBoards.find((board) => board.id === selectedBoard.id)
   const dispatch = useDispatch()
 
   const addSubtask = () => setSubtasks([...subtasks, ""]);
@@ -99,17 +99,14 @@ export default function AddTaskDialog ({ setOpenAddTaskDialog }: AddTaskDialogPr
 
       {/* Status */}
       <div>
-        <label className="block text-sm font-medium mb-1">Status</label>
+        <label className="block text-sm font-medium mb-1">Stage</label>
         <select
           name="stage"
           className="w-full rounded border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
         >
-          <option value="Todo">Todo</option>
-          <option value="Doing">Doing</option>
-          <option value="Done">Done</option>
           {
             currentBoard?.taskStages.map((stage, index) => (
-              <option value={stage} key={index} >{stage}</option>
+              <option key={index} value={stage}>{stage}</option>   
             ))
           }
         </select>
