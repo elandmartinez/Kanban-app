@@ -52,7 +52,7 @@ export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEdi
       stage: temporaryStageState,
       subtasks: newTaskSubtasks
     }
-    console.log({formEntries, taskToUpdate})
+    
     if(taskToUpdate.id && selectedTaskId) {
       dispatch(editTask({id: taskToUpdate.id, newTask: taskToUpdate}))
       setOpenEditTaskDialog(false)
