@@ -8,10 +8,11 @@ interface TaskSelectStageProps {
   stages: string[] | undefined,
   taskData: Task | undefined,
   shouldUpdateStateOnChange: boolean,
-  optionalSetStageStateFunc: Function | undefined,
+  temporaryStageState: String | undefined,
+  setTemporaryStage: Function | undefined,
 }
 
-export default function DropdownSelector ({ stages, taskData, shouldUpdateStateOnChange, optionalSetStageStateFunc}: TaskSelectStageProps) {
+export default function DropdownSelector ({ stages, taskData, shouldUpdateStateOnChange, setTemporaryStage, temporaryStageState}: TaskSelectStageProps) {
   const [showStages, setShowStages] = useState(false)
   const dispatch = useDispatch()
 
@@ -24,7 +25,10 @@ export default function DropdownSelector ({ stages, taskData, shouldUpdateStateO
         ...taskData,
         stage: newStage
       }
-      if(shouldUpdateStateOnChange) dispatch(editTask({id: taskData?.id, newTask: newTaskData}))
+      if(shouldUpdateStateOnChange) {
+        dispatch(editTask({id: taskData?.id, newTask: newTaskData}))
+      }
+      if(setTemporaryStage) setTemporaryStage(newStage)
       setShowStages(false)
     } else {
       throw Error("task data is undefined")
@@ -32,47 +36,34 @@ export default function DropdownSelector ({ stages, taskData, shouldUpdateStateO
   }
 
   return (
-    <div className="text-[0.85rem] text-secondaryTextColor font-semibold">
-      {/*
-      <button
+    <div className="relative text-[0.85rem] text-secondaryTextColor font-semibold flex items-center">
+      <div
         className="z-20 relative w-full h-10 rounded-md border-[0.5px] flex justify-between items-center text-start border-secondaryTextColor bg-background px-3 transition-all duration-100 hover:bg-backgroundSemi active:bg-background"
         onClick={(e) => {
-          e.preventDefault();
+          e.preventDefault()
           setShowStages(!showStages)
         }}
       >
-        {taskData?.stage}
-        <Icon SvgComponent={dropdownArrow} classname="w-5 h-5" />
-      </button>
-      */}
-      <label className="block text-sm text-mainTextColor font-semibold mb-1">Stage</label>
-      <select
-        value={taskData?.stage}
-        onChange={(e) => {
-          if(optionalSetStageStateFunc) optionalSetStageStateFunc(e.target.value)
-        }}
-        name="stage"
-        className={`${showStages ? "h-[155px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[155px] overflow-y-auto left-0 top-[60px] rounded-b-xl text-secondaryTextColor`}
-      >
+        <p>{temporaryStageState || taskData?.stage}</p>
+        <Icon SvgComponent={dropdownArrow} classname="w-5 h-5 absolute right-4 z-20" />
+      </div>
+      <div className={`${showStages ? "h-[155px] pt-[0px]" : "h-0 p-0"} z-10 flex flex-col transition-all duration-200 absolute w-full max-h-[155px] overflow-y-auto left-0 top-[30px] rounded-b-xl`}>
           {
             stages?.map((stage, index) => {
               const islastStage = index === stages.length-1
               const isFirstStage = index === 0
-              console.log({stage})
-
               return (
-                <option
+                <div
                   key={index}
-                  value={stage}
                   className={`px-2 py-3 bg-backgroundSemi hover:bg-mainPurple hover:text-white ${islastStage ? "rounded-b-xl" : ""} ${isFirstStage ? "pt-[25px]": ""}`}
                   onClick={() => udpdateTaksStage(taskData?.id, stage)}
                 >
-                  {stage}
-                </option>
+                  <p>{stage}</p>
+                </div>
               )
             })
           }
-        </select>
+        </div>
     </div>
   )
 }

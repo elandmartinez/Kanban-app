@@ -17,8 +17,9 @@ export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEdi
   const taskData = tasksData.find(task => task.id === selectedTaskId)
   const [taskTitle, setTaskTitle] = useState(taskData?.title || "")
   const [taskDescription, setTaskDescription] = useState(taskData?.description || "")
-  const [taskStage, setTaskStage] = useState(taskData?.stage || "")
   const [temporarySubtasks, setTemporarySubtasks] = useState(taskData?.subtasks || [{name: "", done: false}]);
+
+  const [temporaryStageState, setTemporaryStageState] = useState("")
   const dispatch = useDispatch()
 
   const addSubtask = () => setTemporarySubtasks([...temporarySubtasks, {name: "", done: false}]);
@@ -44,16 +45,18 @@ export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEdi
       if(entry.includes("subtask")) newTaskSubtasks.push({name: String(formEntries[entry]), done: false})
     }
     
-    const taskToCreate = {
-      id: tasksData.length,
+    const taskToUpdate = {
+      id: selectedTaskId as number, // Ensure id is a number
       title: String(formEntries.title),
       description: String(formEntries.description),
-      stage: String(formEntries.stage),
+      stage: temporaryStageState,
       subtasks: newTaskSubtasks
     }
-    console.log({formEntries, taskToCreate})
-    dispatch(editTask({id: taskToCreate.id, newTask: taskToCreate}))
-    setOpenEditTaskDialog(false)
+    console.log({formEntries, taskToUpdate})
+    if(taskToUpdate.id && selectedTaskId) {
+      dispatch(editTask({id: taskToUpdate.id, newTask: taskToUpdate}))
+      setOpenEditTaskDialog(false)
+    }
   };
 
   return (
@@ -107,7 +110,13 @@ export default function EditTaskDialog ({boardStages, selectedTaskId, setOpenEdi
 
       {/* Stage */}
       <div className="relative">
-        <DropdownSelector stages={boardStages} taskData={taskData} shouldUpdateStateOnChange={false} optionalSetStageStateFunc={setTaskStage}/>
+        <DropdownSelector
+          stages={boardStages}
+          taskData={taskData}
+          shouldUpdateStateOnChange={false}
+          temporaryStageState={temporaryStageState}
+          setTemporaryStage={setTemporaryStageState}
+        />
       </div>
 
       {/* Save Button */}
