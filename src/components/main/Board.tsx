@@ -41,6 +41,7 @@ export default function Board () {
       setTasks(boardTasks)
     }
   }, [allTasks, boardData, selectedBoard, selectedTask])
+  console.log({ stages: boardData?.taskStages })
 
   return (
     <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
@@ -53,23 +54,40 @@ export default function Board () {
                   const isLastIndex = index === (boardData.taskStages.length - 1)
 
                   return (
-                  <div key={index} className={`${isLastIndex ? "w-[326px] pr-[26px]" : "w-[300px]"} flex flex-col flex-shrink-0 gap-4`}>
-                    <div className="flex items-center justify-start">
-                      <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
-                      <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold"> {stage} ({stageTasks.length})</h4>
-                    </div>
-                    {
-                      stageTasks.map((stageTask, index) => (
-                        <TaskCard 
-                          key={index}
-                          taskData={stageTask}
-                          setSelectedTask={setSelectedTask}
-                          setOpenTaskDataDialog={setOpenTaskDataDialog}
-                        />
-                      ))
-                    }
-                  </div>
-                )}
+                    <>
+                      <div key={index} className="w-[300px] flex flex-col flex-shrink-0 gap-4">
+                        {/* Normal HTML structure */}
+                        <div className="flex items-center justify-start">
+                          <div className="rounded-[50px] bg-mainPurple w-[0.8rem] h-[0.8rem] mr-3"></div>
+                          <h4 className="tracking-[0.10em] text-[0.9rem] font-semibold">
+                            {stage} ({stageTasks.length})
+                          </h4>
+                        </div>
+                        {stageTasks.map((stageTask, index) => (
+                          <TaskCard
+                            key={index}
+                            taskData={stageTask}
+                            setSelectedTask={setSelectedTask}
+                            setOpenTaskDataDialog={setOpenTaskDataDialog}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Additional structure for the last index */}
+
+                      {isLastIndex && (
+                        <>
+                          <div
+                            className="w-[300px] h-[calc(100%-40px)] mt-10 text-[1.4em] font-bold bg-bgHoverShadow rounded-md flex items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-100"
+                            onClick={() => console.log('Add New Column')}
+                          >
+                            <span className="text-secondaryTextColor font-semibold">+ New Column</span>
+                          </div>
+                        </>
+                      )}
+                    </>
+                  )
+                }
               )
               }
             </div>
