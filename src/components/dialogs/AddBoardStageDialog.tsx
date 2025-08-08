@@ -4,10 +4,11 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 
 interface AddStageDialogProps {
-  boardData: BoardState | undefined
+  boardData: BoardState | undefined,
+  setAddBoardStageDialogOpenState: Function
 }
 
-export default function AddStageDialog ({ boardData }: AddStageDialogProps) {
+export default function AddStageDialog ({ boardData, setAddBoardStageDialogOpenState }: AddStageDialogProps) {
   const [newStage, setNewStage] = useState("")
   const dispatch = useDispatch()
 
@@ -27,12 +28,13 @@ export default function AddStageDialog ({ boardData }: AddStageDialogProps) {
         className="p-3 w-full rounded-2xl bg-mainPurple hover:bg-mainPurpleLight mx-auto text-white font-bold"
         onClick={() => {
         if(boardData) {
-          console.log({boardData})
           const updatedBoard = {
             ...boardData,
-            stages: [...boardData.taskStages, newStage]
+            taskStages: [...boardData.taskStages, newStage]
           }
+          console.log({updatedBoard})
           dispatch(editBoard({id: boardData.id, newBoard: updatedBoard}))
+          setAddBoardStageDialogOpenState(false)
         }
        }}
       >

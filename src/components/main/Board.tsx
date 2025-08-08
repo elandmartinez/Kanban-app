@@ -77,11 +77,15 @@ export default function Board () {
 
                       {isLastIndex && (
                         <>
+                        {/* there's 2 divs here because is needed to bvisually create the padding effect when there's a scroll due to an overflow */}
                           <div
-                            className="min-w-[300px] h-[calc(100%-40px)] mt-10 text-[1.4em] font-bold bg-bgHoverShadow rounded-md flex items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-100"
+                            key={index + 1}
+                            className="w-[324px] h-[calc(100%-40px)] mt-10 flex-shrink-0 pr-6"
                             onClick={() => setOpenAddBoardStageDialog(true)}
                           >
-                            <span className="text-secondaryTextColor font-semibold">+ New Stage</span>
+                            <div className="w-full h-full text-[1.4em] font-bold bg-bgHoverShadow rounded-md flex flex-shrink-0 items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-100">
+                              <span className="text-secondaryTextColor font-semibold">+ New Stage</span>
+                            </div>
                           </div>
                         </>
                       )}
@@ -125,8 +129,8 @@ export default function Board () {
 
       <Dialog open={openAddBoardStageDialog} onOpenChange={(open) => !open && setOpenAddBoardStageDialog(false)}>
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
-        <DialogContent className="w-[90%] md:w-[400px] rounded-lg">
-          <AddStageDialog boardData={boardData} />
+        <DialogContent aria-describedby={undefined} className="w-[90%] md:w-[400px] rounded-lg">
+          <AddStageDialog boardData={boardData} setAddBoardStageDialogOpenState={setOpenAddBoardStageDialog} />
         </DialogContent>
       </Dialog>
 
