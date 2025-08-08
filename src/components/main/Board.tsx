@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import TaskCard from "../secondary/TaskCard"
 import TaskDialog from "../dialogs/TaskDialog"
 import EditTaskDialog from "../dialogs/EditTaskDialog"
+import AddStageDialog from "../dialogs/AddBoardStageDialog"
 
 function getBoardData (id: number, boards: BoardState[]) {
   const boardtoReturn = boards.find(board => board.id === id)
@@ -25,7 +26,7 @@ export default function Board () {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const [openTaskDataDialog, setOpenTaskDataDialog] = useState(false)
   const [openEditTaskDialog, setOpenEditTaskDialog] = useState(false)
-  const [openAddBoardDialog, setOpenAddBoardDialog] = useState(false)
+  const [openAddBoardStageDialog, setOpenAddBoardStageDialog] = useState(false)
   const [openEditBoardDialog, setOpenEditBoardDialog] = useState(false)
   const [openDeleteTaskDialog, setOpenDeleteTaskDialog] = useState(false)
   const [openDeleteBoardDialog, setOpenDeleteBoardDialog] = useState(false)
@@ -41,7 +42,6 @@ export default function Board () {
       setTasks(boardTasks)
     }
   }, [allTasks, boardData, selectedBoard, selectedTask])
-  console.log({ stages: boardData?.taskStages })
 
   return (
     <div className="main-section bg-backgroundSemi p-6 w-screen text-center overflow-x-auto flex justify-center items-center transition-all duration-300">
@@ -78,10 +78,10 @@ export default function Board () {
                       {isLastIndex && (
                         <>
                           <div
-                            className="w-[300px] h-[calc(100%-40px)] mt-10 text-[1.4em] font-bold bg-bgHoverShadow rounded-md flex items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-100"
-                            onClick={() => console.log('Add New Column')}
+                            className="min-w-[300px] h-[calc(100%-40px)] mt-10 text-[1.4em] font-bold bg-bgHoverShadow rounded-md flex items-center justify-center cursor-pointer hover:scale-[1.02] active:scale-100"
+                            onClick={() => setOpenAddBoardStageDialog(true)}
                           >
-                            <span className="text-secondaryTextColor font-semibold">+ New Column</span>
+                            <span className="text-secondaryTextColor font-semibold">+ New Stage</span>
                           </div>
                         </>
                       )}
@@ -118,6 +118,15 @@ export default function Board () {
         <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
         <DialogContent aria-describedby={undefined} className="rounded-xl border-none w-[90%] max-w-[400px] bg-background !pointer-events-auto">
           <EditTaskDialog boardStages={boardData?.taskStages} selectedTaskId={selectedTask?.id} setOpenEditTaskDialog={setOpenEditTaskDialog} />
+        </DialogContent>
+      </Dialog>
+
+      {/* New Stage Dialog */}
+
+      <Dialog open={openAddBoardStageDialog} onOpenChange={(open) => !open && setOpenAddBoardStageDialog(false)}>
+        <DialogOverlay className="w-screen h-screen fixed inset-0 bg-checkInputBg" />
+        <DialogContent className="w-[90%] md:w-[400px] rounded-lg">
+          <AddStageDialog boardData={boardData} />
         </DialogContent>
       </Dialog>
 

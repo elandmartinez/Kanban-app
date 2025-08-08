@@ -16,7 +16,7 @@ export default function TaskCard ({ taskData, setSelectedTask, setOpenTaskDataDi
       setSelectedTask(taskData)
       setOpenTaskDataDialog(true)
     }}
-    className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow hover:scale-105">
+    className="p-4 bg-background rounded-xl flex flex-col gap-4 text-start shadow-md shadow-mainPurpleShadow hover:scale-[1.03]">
       <h5 className="text-mainTextColor font-bold">{taskData.title}</h5>
       <p className="text-[0.8rem] font-bold">{subtasksCompleted} of {totalSubtasks} subtasks</p>
     </article>
